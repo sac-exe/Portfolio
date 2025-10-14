@@ -5,15 +5,19 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Sachin — Portfolio</title>
   <meta name="theme-color" content="#fafafa" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
   <link rel="stylesheet" href="style.css" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
   <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/@barba/core@2.9.7/dist/barba.umd.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script defer src="script.js"></script>
 </head>
-<body class="theme-brutal">
+<body class="theme-brutal sfx-click" >
   <div class="loader" aria-hidden="true">
     <div class="loader-block lb1"></div>
     <div class="loader-block lb2"></div>
@@ -28,25 +32,25 @@
 
   <main data-barba="container" data-barba-namespace="home">
     <header class="nav">
-      <a class="brand sfx-click" href="/">Sachin</a>
+      <a class="brand sfx-click" href="/">portfolio</a>
       <nav class="nav-links">
-        <a class="nav-link sfx-hover" href="/work">Work</a>
-        <a class="nav-link sfx-hover" href="#about">About</a>
-        <a class="nav-link sfx-click" href="#contact">Contact</a>
+        <a class="nav-link sfx-hover sfx-click" href="#work">Work</a>
+        <a class="nav-link sfx-hover sfx-click" href="#about">About</a>
+        <a class="nav-link sfx-hover sfx-click" href="mailto:sj7717620@gmail.com">Contact</a>
       </nav>
     </header>
 
     <section class="hero">
       <div class="hero-left">
         <h1 class="split-lines">Make it bold. Make it fast. Make it memorable.</h1>
-        <p class="lead split-lines">Design-forward engineering for interfaces that stand out and load instantly.</p>
+        <p class="lead split-lines"><span class="name" >Hey, I'm Sachin-</span>I dive deep into cybersecurity, specializing in ethical hacking and red teaming, and I love blending that mindset into designing secure, modern front-end applications.</p>
         <div class="cta-row">
-          <a class="button primary sfx-click" href="/work">See Work</a>
-          <a class="button outline sfx-click" href="#contact">Get in touch</a>
+          <a class="button primary sfx-click sfx-hover" href="/#links">See Work</a>
+          <a class="button outline sfx-click sfx-hover" href="mailto:sj7717620@gmail.com">Get in touch</a>
         </div>
       </div>
-      <div class="hero-right">
-        <div class="hero-card pop sfx-card">
+      <div class="hero-right" data-aos="fade-down-left">
+        <div class="hero-card pop sfx-hover">
           <div class="hc-badge">2025</div>
           <div class="hc-title">Selected Work</div>
           <ul class="hc-list">
@@ -59,35 +63,73 @@
       </div>
     </section>
 
-    <section class="section" id="work">
-      <h2 class="section-title reveal-up">Highlights</h2>
-      <div class="projects auto-grid">
-        <!-- same project cards -->
-      </div>
-    </section>
-
     <section class="section" id="about">
       <h2 class="section-title reveal-up">About</h2>
       <p class="measure reveal-up">Building expressive frontends with strong engineering fundamentals, accessible patterns, and testable motion.</p>
     </section>
 
-    <section class="section" id="contact">
-      <h2 class="section-title reveal-up">Contact</h2>
-      <form class="contact sfx-form" action="https://formspree.io/f/yourid" method="POST">
-        <input class="input" name="name" placeholder="Your Name" required />
-        <input class="input" type="email" name="email" placeholder="Email" required />
-        <textarea class="input" name="message" placeholder="Your message..." rows="5" required></textarea>
-        <button class="button primary sfx-click" type="submit">Send</button>
-      </form>
+    <section class="section" id="work">
+      <h1 class="section-title reveal-up">Projects</h1>
+      <div class="project-grid">
+        <article id="ui-kit" class="proj card reveal-up sfx-hover">
+          <h3>Interactive UI Kit</h3>
+          <p>Motion tokens, focus-visible states, and component blueprints.</p>
+          <ul class="tags"><li>GSAP</li><li>Accessibility</li><li>Design Systems</li></ul>
+        </article>
+        <article id="secure-dash" class="proj card reveal-up sfx-hover">
+          <h3>Secure Dashboard</h3>
+          <p>Session-safe auth, data viz, and crisp feedback loops.</p>
+          <ul class="tags"><li>Auth</li><li>SPA/MPA</li><li>Perf</li></ul>
+        </article>
+        <article id="dev-tools" class="proj card reveal-up sfx-hover">
+          <h3>Dev Tools</h3>
+          <p>Perf tracers, lint/preset stacks, and CI motion checks.</p>
+          <ul class="tags"><li>Tooling</li><li>DX</li><li>Automation</li></ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="links">
+      <h2 class="section-title">My Websites</h2>
+      <div class="links-grid">
+        <a class="link-card sfx-hover" href="https://readora.example.com" target="_blank" rel="noopener noreferrer" aria-label="Readora website (opens in new tab)">
+          <span class="link-title">Readora</span>
+          <span class="link-meta">readora.example.com</span>
+          <span class="link-external" aria-hidden="true">↗</span>
+        </a>
+
+        <a class="link-card sfx-hover" href="https://tools.example.com" target="_blank" rel="noopener noreferrer" aria-label="Developer Tools website (opens in new tab)">
+          <span class="link-title">Dev Tools</span>
+          <span class="link-meta">tools.example.com</span>
+          <span class="link-external" aria-hidden="true">↗</span>
+        </a>
+
+        <a class="link-card sfx-hover" href="https://dashboard.example.com" target="_blank" rel="noopener noreferrer" aria-label="Dashboard website (opens in new tab)">
+          <span class="link-title">Dashboard</span>
+          <span class="link-meta">dashboard.example.com</span>
+          <span class="link-external" aria-hidden="true">↗</span>
+        </a>
+      </div>
     </section>
 
     <footer class="footer">
       <span>© 2025 Sachin</span>
       <div class="social">
-        <a class="nav-link sfx-hover" href="https://github.com/sac-exe">GitHub</a>
-        <a class="nav-link sfx-hover" href="https://www.instagram.com/s_c.exe?igsh=b3gyY3RqODR3b2cz">Instagram</a>
+        <a class="nav-link sfx-hover" href="https://github.com/sac-exe"><i class="fa-brands fa-github"></i> GitHub</a>
+        <a class="nav-link sfx-hover" href="https://www.instagram.com/s_c.exe?igsh=b3gyY3RqODR3b2cz"><i class="fa-brands fa-instagram"></i>Instagram</a>
+        <a class="nav-link sfx-hover" href="https://www.linkedin.com/in/sachin-sac"><i class="fa-brands fa-linkedin"></i> Linkedin</a>
       </div>
     </footer>
   </main>
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    AOS.init();
+  });
+
+  document.addEventListener('barba:after', function() {
+    AOS.refresh();
+  });
+</script>
 </body>
+
 </html>
