@@ -14,7 +14,6 @@
   <script defer src="script.js"></script>
 </head>
 <body class="theme-brutal">
-  <!-- Loader -->
   <div class="loader" aria-hidden="true">
     <div class="loader-block lb1"></div>
     <div class="loader-block lb2"></div>
@@ -22,13 +21,12 @@
     <div class="loader-mark">SAC</div>
   </div>
 
-  <!-- Cursor -->
   <div class="cursor">
     <div class="cursor-dot"></div>
     <div class="cursor-ring"></div>
   </div>
 
-  <section data-barba="container" data-barba-namespace="home">
+  <main data-barba="container" data-barba-namespace="home">
     <header class="nav">
       <a class="brand sfx-click" href="/">Sachin</a>
       <nav class="nav-links">
@@ -63,27 +61,14 @@
 
     <section class="section" id="work">
       <h2 class="section-title reveal-up">Highlights</h2>
-      <div class="projects">
-        <a class="prj card sfx-card" href="/work#ui-kit">
-          <div class="prj-head" style="--c:#FFDD00">UI Kit</div>
-          <div class="prj-body">Reusable components with motion tokens and robust a11y.</div>
-        </a>
-        <a class="prj card sfx-card" href="/work#secure-dash">
-          <div class="prj-head" style="--c:#FF6B6B">Secure Dash</div>
-          <div class="prj-body">Auth flows, state sync, and crisp feedback loops.</div>
-        </a>
-        <a class="prj card sfx-card" href="/work#dev-tools">
-          <div class="prj-head" style="--c:#56CCF2">Dev Tools</div>
-          <div class="prj-body">Perf tracers, lint presets, and motion pipelines.</div>
-        </a>
+      <div class="projects auto-grid">
+        <!-- same project cards -->
       </div>
     </section>
 
     <section class="section" id="about">
       <h2 class="section-title reveal-up">About</h2>
-      <p class="measure reveal-up">
-        Building expressive frontends with strong engineering fundamentals, accessible patterns, and testable motion. Comfortable across modern stacks and workflows.
-      </p>
+      <p class="measure reveal-up">Building expressive frontends with strong engineering fundamentals, accessible patterns, and testable motion.</p>
     </section>
 
     <section class="section" id="contact">
@@ -96,40 +81,13 @@
       </form>
     </section>
 
-  </section>
-
-
-
-
-  <section data-barba="container" data-barba-namespace="work">
-
-    <section class="section">
-      <h1 class="section-title reveal-up">Projects</h1>
-      <div class="project-grid">
-        <article id="ui-kit" class="proj card reveal-up">
-          <h3>Interactive UI Kit</h3>
-          <p>Motion tokens, focus-visible states, and component blueprints.</p>
-          <ul class="tags"><li>GSAP</li><li>Accessibility</li><li>Design Systems</li></ul>
-        </article>
-        <article id="secure-dash" class="proj card reveal-up">
-          <h3>Secure Dashboard</h3>
-          <p>Session-safe auth, data viz, and crisp feedback loops.</p>
-          <ul class="tags"><li>Auth</li><li>SPA/MPA</li><li>Perf</li></ul>
-        </article>
-        <article id="dev-tools" class="proj card reveal-up">
-          <h3>Dev Tools</h3>
-          <p>Perf tracers, lint/preset stacks, and CI motion checks.</p>
-          <ul class="tags"><li>Tooling</li><li>DX</li><li>Automation</li></ul>
-        </article>
-      </div>
-    </section>
-  </section>
-  <footer class="footer">
+    <footer class="footer">
       <span>© 2025 Sachin</span>
       <div class="social">
         <a class="nav-link sfx-hover" href="https://github.com/sac-exe">GitHub</a>
         <a class="nav-link sfx-hover" href="https://www.instagram.com/s_c.exe?igsh=b3gyY3RqODR3b2cz">Instagram</a>
       </div>
     </footer>
+  </main>
 </body>
 </html>
