@@ -8,11 +8,7 @@
   <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/@barba/core@2.9.7/dist/barba.umd.min.js"></script>
-  <script defer src="scripts/audio.js"></script>
-  <script defer src="scripts/sfx.js"></script>
-  <script defer src="scripts/cursor.js"></script>
-  <script defer src="scripts/animations.js"></script>
-  <script defer src="scripts/transitions.js"></script>
+  <script defer src="script.js"></script>
 </head>
 <body class="theme-brutal">
   <div class="loader" aria-hidden="true">
@@ -26,6 +22,40 @@
     <div class="cursor-ring"></div>
   </div>
 
-  
+  <main data-barba="container" data-barba-namespace="work">
+    <header class="nav">
+      <a class="brand sfx-click" href="portfolio.html">Sachin</a>
+      <nav class="nav-links">
+        <a class="nav-link sfx-hover" href="work.html">Work</a>
+        <a class="nav-link sfx-hover" href="portfolio.html#about">About</a>
+        <a class="nav-link sfx-click" href="portfolio.html#contact">Contact</a>
+      </nav>
+    </header>
+
+    <section class="section">
+      <h1 class="section-title reveal-up">Projects</h1>
+      <div class="project-grid">
+        <article id="ui-kit" class="proj card reveal-up">
+          <h3>Interactive UI Kit</h3>
+          <p>Motion tokens, focus-visible states, and component blueprints.</p>
+          <ul class="tags"><li>GSAP</li><li>Accessibility</li><li>Design Systems</li></ul>
+        </article>
+        <article id="secure-dash" class="proj card reveal-up">
+          <h3>Secure Dashboard</h3>
+          <p>Session-safe auth, data viz, and crisp feedback loops.</p>
+          <ul class="tags"><li>Auth</li><li>SPA/MPA</li><li>Perf</li></ul>
+        </article>
+        <article id="dev-tools" class="proj card reveal-up">
+          <h3>Dev Tools</h3>
+          <p>Perf tracers, lint/preset stacks, and CI motion checks.</p>
+          <ul class="tags"><li>Tooling</li><li>DX</li><li>Automation</li></ul>
+        </article>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <span>© 2025 Sachin</span>
+    </footer>
+  </main>
 </body>
 </html>
