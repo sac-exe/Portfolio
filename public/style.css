@@ -273,8 +273,11 @@ footer,
   justify-content:space-between;
   align-items:center;
   flex-wrap:wrap;
-  gap:10px;
   margin-bottom:2rem;
+  position:sticky;
+  z-index:20;
+  background:var(--bg);
+  row-gap:8px;
 }
 .social a{
   text-decoration:none;
