@@ -201,3 +201,24 @@ const SFX = (() => {
     });
   });
 })();
+
+
+//custom-loader inside that page he he :)
+document.querySelectorAll('.nav-link[href^="/#"]').forEach(link => {
+  link.addEventListener('click', function(e) {
+    e.preventDefault();
+    const targetId = this.getAttribute('href').replace('/#', '');
+    const target = document.getElementById(targetId);
+    const loader = document.querySelector('.loader');
+    if (!target || !loader) return;
+
+    // Show loader
+    loader.classList.add('active');
+
+    // Wait for animation (e.g. 700ms), then scroll and hide loader
+    setTimeout(() => {
+      target.scrollIntoView({ behavior: 'smooth' });
+      loader.classList.remove('active');
+    }, 700); // Adjust time to match your loader animation
+  });
+});
