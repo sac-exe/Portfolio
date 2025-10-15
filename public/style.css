@@ -293,13 +293,12 @@ footer,
 .loader {
   position: fixed;
   inset: 0;
-  background: #FFE8F2;
+  background: transparent;
   z-index: 100;
-  display: grid;
-  place-items: center;
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
+  transition: opacity 0.3s;
 }
 
 .loader.active {
@@ -310,30 +309,28 @@ footer,
 
 .loader-block {
   position: absolute;
-  bottom: 0;
   left: 0;
-  right: 0;
-  height: 33.34%;
-  border-top: 4px solid var(--stroke);
-  /* Make sure blocks are visible */
-  opacity: 1;
-  transition: transform 0.45s, opacity 0.2s;
+  width: 100%;
+  height: 100%;
+  will-change: transform;
 }
 
-.lb1 { background: #FFDD00; }
-.lb2 { background: #56CCF2; }
-.lb3 { background: #FF6B6B; }
+.lb1 { background: #FFDD00; z-index: 1; }
+.lb2 { background: #56CCF2; z-index: 2; }
+.lb3 { background: #FF6B6B; z-index: 3; }
 
 .loader-mark {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   font-weight: 700;
   font-size: clamp(28px, 2.2vw, 42px);
   border: 4px solid var(--stroke);
   padding: clamp(6px, 1vw, 10px) clamp(8px, 1.4vw, 14px);
   background: #fff;
   box-shadow: 8px 8px 0 #000;
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 0.3s, transform 0.3s;
+  z-index: 10;
 }
 
 /* Cursor */

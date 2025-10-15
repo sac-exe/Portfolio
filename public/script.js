@@ -136,7 +136,6 @@ const SFX = (() => {
 
   window.addEventListener('mousedown', () => {
     isDown = true;
-
   });
   window.addEventListener('mouseup', () => {
     isDown = false;
@@ -158,67 +157,36 @@ const SFX = (() => {
   raf();
 })();
 
-//transitions.js
-(() => {
-  const loader = document.querySelector('.loader');
-  const blocks = document.querySelectorAll('.loader-block');
-  const mark = document.querySelector('.loader-mark');
-
-  const show = async () => {
-    loader.classList.add('active');
-    const tl = gsap.timeline();
-    tl.set(loader, { autoAlpha:1 })
-      .to(blocks, { yPercent:-100, duration:0.45, ease:'power4.inOut', stagger:0.06 })
-      .fromTo(mark, { autoAlpha:0, y:10 }, { autoAlpha:1, y:0, duration:0.3 }, '-=0.2');
-    return tl;
-  };
-
-  const hide = async () => {
-    const tl = gsap.timeline();
-    tl.to(mark, { autoAlpha:0, y:-8, duration:0.25 })
-      .to(blocks, { yPercent:0, duration:0.45, ease:'power4.inOut', stagger:0.05 }, 0)
-      .set(loader, { autoAlpha:0, onComplete: () => loader.classList.remove('active') });
-    return tl;
-  };
-
-  const enter = (container) => {
-    gsap.from(container.querySelectorAll('h1,h2,.card,.button,.proj'), {
-      y:16, opacity:0, duration:0.5, ease:'power3.out', stagger:0.05
-    });
-  };
-
-  document.addEventListener('DOMContentLoaded', () => {
-    if (!window.barba) return;
-    barba.init({
-      transitions: [{
-        name:'blocks',
-        async leave(){ await show(); },
-        async enter({ next }){
-          await hide(); enter(next.container);
-          if (AudioEngine?.ctx?.state === 'suspended') AudioEngine.ctx.resume();
-        }
-      }]
-    });
-  });
-})();
-
-
-//custom-loader inside that page he he :)
+//custom loader animation for nav-link scroll
 document.querySelectorAll('.nav-link[href^="/#"]').forEach(link => {
   link.addEventListener('click', function(e) {
     e.preventDefault();
     const targetId = this.getAttribute('href').replace('/#', '');
     const target = document.getElementById(targetId);
     const loader = document.querySelector('.loader');
-    if (!target || !loader) return;
+    const lb1 = document.querySelector('.loader-block.lb1');
+    const lb2 = document.querySelector('.loader-block.lb2');
+    const lb3 = document.querySelector('.loader-block.lb3');
+    const mark = document.querySelector('.loader-mark');
+    if (!target || !loader || !lb1 || !lb2 || !lb3 || !mark) return;
 
-    // Show loader
+    // Reset positions: lb1 is visible, lb2/lb3 are below the screen
+    gsap.set(lb1, { y: 0 });
+    gsap.set(lb2, { y: '100%' });
+    gsap.set(lb3, { y: '100%' });
+
     loader.classList.add('active');
 
-    // Wait for animation (e.g. 700ms), then scroll and hide loader
+    // Animate: lb1 appears, then lb2 slides up over lb1, then lb3 slides up over lb2
+    const tl = gsap.timeline();
+    tl.set(loader, { autoAlpha: 1 })
+      .to(lb2, { y: 0, duration: 0.15, ease: 'power2.inOut' }, "+=0.18")
+      .to(lb3, { y: 0, duration: 0.15, ease: 'power2.inOut' }, "+=0.18")
+      .to(loader, { autoAlpha: 0, duration: 0.18, onComplete: () => loader.classList.remove('active') }, "+=0.22");
+
+    // Wait for loader animation, then scroll
     setTimeout(() => {
       target.scrollIntoView({ behavior: 'smooth' });
-      loader.classList.remove('active');
-    }, 700); // Adjust time to match your loader animation
+    }, 500); // Match total GSAP timeline duration
   });
 });
