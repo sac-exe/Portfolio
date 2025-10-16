@@ -33,40 +33,117 @@
 
   <main data-barba="container" data-barba-namespace="home">
     <header class="nav">
-      <a class="brand sfx-click" href="/">portfolio</a>
+      <a class="brand sfx-click" href="/">Sachin <span aria-hidden="true">·</span> Portfolio</a>
       <nav class="nav-links">
         <a class="nav-link sfx-hover sfx-click" href="/#work">Work</a>
         <a class="nav-link sfx-hover sfx-click" href="/#skills">Skills</a>
-        <a class="nav-link sfx-hover sfx-click" href="mailto:sj7717620@gmail.com">Contact</a>
+        <a class="nav-link sfx-hover sfx-click" href="/#about">About</a>
+        <a class="nav-link sfx-hover sfx-click" href="/#contact">Contact</a>
+        <a class="nav-link sfx-hover sfx-click" href="/assets/Sachin_Resume.pdf" target="_blank" rel="noopener">Resume</a>
       </nav>
     </header>
 
     <section class="hero">
       <div class="hero-left">
-        <h1 class="split-lines">Make it bold. Make it fast. Make it memorable.</h1>
-        <p class="lead split-lines"><span class="name" >Hey, I'm Sachin-</span>I dive deep into cybersecurity, specializing in ethical hacking and red teaming, and I love blending that mindset into designing secure, modern front-end applications.</p>
-        <div class="cta-row ">
-          <a class="button primary nav-link sfx-click sfx-hover" href="/#links">See Work</a>
+        <div class="id-row" aria-label="Identity">
+          <img class="avatar" src="/assets/img/sachin.jpg" alt="Portrait of Sachin" width="96" height="96" />
+          <div class="id-meta">
+            <h1 class="split-lines">
+              <span class="highlight-name">Sachin</span> — Frontend Developer with a security mindset
+            </h1>
+            <p class="lead split-lines">
+              Builds fast, accessible interfaces with motion systems and clean architectures, applying security-first decisions from day one.
+            </p>
+          </div>
+        </div>
+        <div class="cta-row">
+          <a class="button primary nav-link sfx-click sfx-hover" href="/#work">View projects</a>
           <a class="button outline sfx-click sfx-hover" href="mailto:sj7717620@gmail.com">Get in touch</a>
         </div>
+
+        <div class="bio-card card sfx-hover" aria-label="Quick Bio">
+          <div class="bio-grid">
+            <div>
+              <div class="bio-label">Focus</div>
+              <div class="bio-value">Frontend, DX tooling, secure UX</div>
+            </div>
+            <div>
+              <div class="bio-label">Stack</div>
+              <div class="bio-value">HTML/CSS, JS (ESNext), GSAP, React, Node.js</div>
+            </div>
+            <div>
+              <div class="bio-label">Currently</div>
+              <div class="bio-value">BCA student, building Readora & UI kits</div>
+            </div>
+            <div>
+              <div class="bio-label">Location</div>
+              <div class="bio-value">Kerala, India · IST</div>
+            </div>
+          </div>
+        </div>
       </div>
+
       <div class="hero-right" data-aos="fade-down-left">
         <div class="hero-card pop sfx-hover">
           <div class="hc-badge">2025</div>
-          <div class="hc-title">Selected Work</div>
+          <div class="hc-title">Selected Highlights</div>
           <ul class="hc-list">
-            <li>Motion Systems</li>
-            <li>Accessible UI</li>
-            <li>Perf‑first Builds</li>
+            <li>Motion tokens & micro‑interactions</li>
+            <li>Accessible, semantic components</li>
+            <li>Perf‑first, instrumented builds</li>
           </ul>
         </div>
-        <div class="hero-sticker">New</div>
+        <div class="hero-sticker">Available</div>
+      </div>
+    </section>
+
+    <section class="section" id="work">
+      <h2 class="section-title">Featured projects</h2>
+      <div class="project-grid">
+        <article id="readora" class="proj card reveal-up sfx-hover">
+          <h3>Readora — Reading Web App</h3>
+          <p>Responsive reading app with auth, bookmarks, and ad-safe placements; improved session stability and UI polish.</p>
+          <ul class="tags"><li>Node.js</li><li>Express</li><li>MongoDB</li><li>GSAP</li><li>A11y</li></ul>
+          <div class="proj-meta">
+            <span>Role: Frontend + Integration</span>
+            <span>Outcome: Faster nav, fewer session errors</span>
+          </div>
+          <div class="proj-cta">
+            <a class="button outline sfx-click sfx-hover" href="https://readora-yksx.onrender.com" target="_blank" rel="noopener">Live ↗</a>
+            <a class="button sfx-click sfx-hover" href="/case-studies/readora">Case study</a>
+          </div>
+        </article>
+
+        <article id="ui-kit" class="proj card reveal-up sfx-hover">
+          <h3>Interactive UI Kit</h3>
+          <p>Motion tokens, focus-visible states, and reusable blueprints for consistent, accessible UI at speed.</p>
+          <ul class="tags"><li>GSAP</li><li>Design Systems</li><li>Accessibility</li></ul>
+          <div class="proj-meta">
+            <span>Role: System design</span>
+            <span>Outcome: Faster build, fewer regressions</span>
+          </div>
+          <div class="proj-cta">
+            <a class="button sfx-click sfx-hover" href="/case-studies/ui-kit">Case study</a>
+          </div>
+        </article>
+
+        <article id="secure-dash" class="proj card reveal-up sfx-hover">
+          <h3>Secure Dashboard</h3>
+          <p>Session-safe auth patterns, crisp feedback loops, and instrumentation for performance tracing.</p>
+          <ul class="tags"><li>Auth</li><li>SPA/MPA</li><li>Perf</li></ul>
+          <div class="proj-meta">
+            <span>Role: Frontend engineering</span>
+            <span>Outcome: Stable sessions, clearer UX</span>
+          </div>
+          <div class="proj-cta">
+            <a class="button sfx-click sfx-hover" href="/case-studies/secure-dashboard">Case study</a>
+          </div>
+        </article>
       </div>
     </section>
 
     <section class="section" id="skills">
       <h2 class="section-title">Skills</h2>
-
       <div class="skills-grid">
 
         <div class="skill-card sfx-hover">
@@ -131,58 +208,59 @@
       </div>
     </section>
 
-
-    <section class="section" id="work">
-      <h1 class="section-title reveal-up">Projects</h1>
-      <div class="project-grid">
-        <article id="ui-kit" class="proj card reveal-up sfx-hover">
-          <h3>Interactive UI Kit</h3>
-          <p>Motion tokens, focus-visible states, and component blueprints.</p>
-          <ul class="tags"><li>GSAP</li><li>Accessibility</li><li>Design Systems</li></ul>
-        </article>
-        <article id="secure-dash" class="proj card reveal-up sfx-hover">
-          <h3>Secure Dashboard</h3>
-          <p>Session-safe auth, data viz, and crisp feedback loops.</p>
-          <ul class="tags"><li>Auth</li><li>SPA/MPA</li><li>Perf</li></ul>
-        </article>
-        <article id="dev-tools" class="proj card reveal-up sfx-hover">
-          <h3>Dev Tools</h3>
-          <p>Perf tracers, lint/preset stacks, and CI motion checks.</p>
-          <ul class="tags"><li>Tooling</li><li>DX</li><li>Automation</li></ul>
-        </article>
+    <section class="section" id="about">
+      <h2 class="section-title">About</h2>
+      <div class="about-grid card">
+        <p>20‑year‑old BCA student building modern web apps with a performance and accessibility focus, bringing a security‑aware mindset to UI and DX decisions.</p>
+        <ul class="about-bullets">
+          <li>Front‑of‑stack first: architecture, state, motion, a11y</li>
+          <li>Tooling: presets, lint stacks, CI checks for motion regressions</li>
+          <li>Security: recon basics, session integrity, safe UI patterns</li>
+        </ul>
+        <div class="about-links">
+          <a class="button outline sfx-click sfx-hover" href="https://portfolio-jp5j.onrender.com" target="_blank" rel="noopener">More work ↗</a>
+          <a class="button sfx-click sfx-hover" href="/assets/Sachin_Resume.pdf" target="_blank" rel="noopener">Resume</a>
+        </div>
       </div>
     </section>
 
     <section class="section" id="links">
-      <h2 class="section-title">My Websites</h2>
+      <h2 class="section-title">My websites</h2>
       <div class="links-grid">
-        <a class="link-card sfx-hover" href="https://readora-yksx.onrender.com" target="_blank" rel="noopener noreferrer" aria-label="Readora website (opens in new tab)">
-          <span class="link-title">Readora</span>
-          <span class="link-external" aria-hidden="true">↗</span>
+        <a class="link-card sfx-hover" href="https://readora-yksx.onrender.com" target="_blank" rel="noopener noreferrer" aria-label="Readora">
+          <span class="link-title">Readora</span><span class="link-external" aria-hidden="true">↗</span>
         </a>
-
-        <a class="link-card sfx-hover" href="https://portfolio-jp5j.onrender.com" target="_blank" rel="noopener noreferrer" aria-label="Developer Tools website (opens in new tab)">
-          <span class="link-title">My Portfolio</span>
-          <span class="link-external" aria-hidden="true">↗</span>
+        <a class="link-card sfx-hover" href="https://portfolio-jp5j.onrender.com" target="_blank" rel="noopener noreferrer" aria-label="Portfolio">
+          <span class="link-title">My Portfolio</span><span class="link-external" aria-hidden="true">↗</span>
         </a>
+      </div>
+    </section>
 
-        <!-- <a class="link-card sfx-hover" href="https://dashboard.example.com" target="_blank" rel="noopener noreferrer" aria-label="Dashboard website (opens in new tab)">
-          <span class="link-title">Dashboard</span>
-          <span class="link-meta">dashboard.example.com</span>
-          <span class="link-external" aria-hidden="true">↗</span>
-        </a> -->
+    <section class="section contact" id="contact">
+      <h2 class="section-title">Contact</h2>
+      <div class="card contact-card">
+        <div class="contact-meta">
+          <div class="status-dot" aria-hidden="true"></div>
+          <span>Open to freelance and internships</span>
+        </div>
+        <div class="contact-actions">
+          <a class="button primary sfx-click sfx-hover" href="mailto:sj7717620@gmail.com">Email</a>
+          <a class="button outline sfx-click sfx-hover" href="https://github.com/sac-exe" target="_blank" rel="noopener">GitHub</a>
+          <a class="button outline sfx-click sfx-hover" href="https://www.linkedin.com/in/sachin-sac" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
       </div>
     </section>
 
     <footer class="footer">
       <span>© 2025 Sachin</span>
       <div class="social">
-        <a class="nav-link sfx-hover" href="https://github.com/sac-exe"><i class="fa-brands fa-github"></i> GitHub</a>
-        <a class="nav-link sfx-hover" href="https://www.instagram.com/s_c.exe?igsh=b3gyY3RqODR3b2cz"><i class="fa-brands fa-instagram"></i>Instagram</a>
-        <a class="nav-link sfx-hover" href="https://www.linkedin.com/in/sachin-sac"><i class="fa-brands fa-linkedin"></i> Linkedin</a>
+        <a class="nav-link sfx-hover" href="https://github.com/sac-exe">GitHub</a>
+        <a class="nav-link sfx-hover" href="https://www.instagram.com/s_c.exe?igsh=b3gyY3RqODR3b2cz">Instagram</a>
+        <a class="nav-link sfx-hover" href="https://www.linkedin.com/in/sachin-sac">LinkedIn</a>
       </div>
     </footer>
   </main>
+
   <script>
   document.addEventListener('DOMContentLoaded', function() {
     AOS.init();

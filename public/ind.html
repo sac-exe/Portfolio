@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en" data-barba="wrapper">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Sachin — Portfolio</title>
+  <meta name="theme-color" content="#fafafa" />
+  <link rel="icon" href="/assets/tab_icon/SAC.png" type="image/png" sizes="32x32">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/@barba/core@2.9.7/dist/barba.umd.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script defer src="script.js"></script>
+</head>
+<body class="theme-brutal sfx-click" >
+  <div class="loader" aria-hidden="true">
+    <div class="loader-block lb1"></div>
+    <div class="loader-block lb2"></div>
+    <div class="loader-block lb3"></div>
+    <div class="loader-mark">SAC</div>
+  </div>
+
+  <div class="cursor">
+    <div class="cursor-dot"></div>
+    <div class="cursor-ring"></div>
+  </div>
+
+  <main data-barba="container" data-barba-namespace="home">
+    <header class="nav">
+      <a class="brand sfx-click" href="/">portfolio</a>
+      <nav class="nav-links">
+        <a class="nav-link sfx-hover sfx-click" href="/#work">Work</a>
+        <a class="nav-link sfx-hover sfx-click" href="/#skills">Skills</a>
+        <a class="nav-link sfx-hover sfx-click" href="mailto:sj7717620@gmail.com">Contact</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="hero-left">
+        <h1 class="split-lines">Make it bold. Make it fast. Make it memorable.</h1>
+        <p class="lead split-lines"><span class="name" >Hey, I'm Sachin-</span>I dive deep into cybersecurity, specializing in ethical hacking and red teaming, and I love blending that mindset into designing secure, modern front-end applications.</p>
+        <div class="cta-row ">
+          <a class="button primary nav-link sfx-click sfx-hover" href="/#links">See Work</a>
+          <a class="button outline sfx-click sfx-hover" href="mailto:sj7717620@gmail.com">Get in touch</a>
+        </div>
+      </div>
+      <div class="hero-right" data-aos="fade-down-left">
+        <div class="hero-card pop sfx-hover">
+          <div class="hc-badge">2025</div>
+          <div class="hc-title">Selected Work</div>
+          <ul class="hc-list">
+            <li>Motion Systems</li>
+            <li>Accessible UI</li>
+            <li>Perf‑first Builds</li>
+          </ul>
+        </div>
+        <div class="hero-sticker">New</div>
+      </div>
+    </section>
+
+    <section class="section" id="skills">
+      <h2 class="section-title">Skills</h2>
+
+      <div class="skills-grid">
+
+        <div class="skill-card sfx-hover">
+          <span class="skill-badge" style="--c: var(--p1)"><i class="fa-brands fa-html5" aria-hidden="true"></i></span>
+          <div class="skill-title">HTML5</div>
+          <div class="skill-level">Semantic, a11y, SEO</div>
+        </div>
+
+        <div class="skill-card  sfx-hover">
+          <span class="skill-badge" style="--c: var(--p3)"><i class="fa-brands fa-css3-alt" aria-hidden="true"></i></span>
+          <div class="skill-title">CSS3</div>
+          <div class="skill-level">Grid, Flex, Animations</div>
+        </div>
+
+        <div class="skill-card  sfx-hover">
+          <span class="skill-badge" style="--c: var(--p4)"><i class="fa-brands fa-js" aria-hidden="true"></i></span>
+          <div class="skill-title">JavaScript</div>
+          <div class="skill-level">ESNext, GSAP, SPA/MPA</div>
+        </div>
+
+        <div class="skill-card  sfx-hover">
+          <span class="skill-badge" style="--c: var(--p1)"><i class="fa-brands fa-node-js" aria-hidden="true"></i></span>
+          <div class="skill-title">Node.js</div>
+          <div class="skill-level">Express, APIs</div>
+        </div>
+
+        <div class="skill-card  sfx-hover">
+          <span class="skill-badge" style="--c: var(--p3)"><i class="fa-solid fa-database" aria-hidden="true"></i></span>
+          <div class="skill-title">MongoDB</div>
+          <div class="skill-level">Schema, Aggregations</div>
+        </div>
+
+        <div class="skill-card  sfx-hover">
+          <span class="skill-badge" style="--c: var(--p4)"><i class="fa-brands fa-git-alt" aria-hidden="true"></i></span>
+          <div class="skill-title">Git</div>
+          <div class="skill-level">Branches, CI basics</div>
+        </div>
+
+        <div class="skill-card  sfx-hover">
+          <span class="skill-badge" style="--c: var(--p2)"><i class="fa-brands fa-linux" aria-hidden="true"></i></span>
+          <div class="skill-title">Linux</div>
+          <div class="skill-level">CLI, servers</div>
+        </div>
+
+        <div class="skill-card  sfx-hover">
+          <span class="skill-badge" style="--c: var(--p3)"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i></span>
+          <div class="skill-title">Pentesting</div>
+          <div class="skill-level">Recon, basics</div>
+        </div>
+
+        <div class="skill-card  sfx-hover">
+          <span class="skill-badge" style="--c: var(--p1)"><i class="fa-brands fa-react" aria-hidden="true"></i></span>
+          <div class="skill-title">React</div>
+          <div class="skill-level">Hooks, SPA</div>
+        </div>
+
+        <div class="skill-card  sfx-hover">
+          <span class="skill-badge" style="--c: var(--p4)"><i class="fa-brands fa-aws" aria-hidden="true"></i></span>
+          <div class="skill-title">AWS</div>
+          <div class="skill-level">Basics, deploy</div>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="section" id="work">
+      <h1 class="section-title reveal-up">Projects</h1>
+      <div class="project-grid">
+        <article id="ui-kit" class="proj card reveal-up sfx-hover">
+          <h3>Interactive UI Kit</h3>
+          <p>Motion tokens, focus-visible states, and component blueprints.</p>
+          <ul class="tags"><li>GSAP</li><li>Accessibility</li><li>Design Systems</li></ul>
+        </article>
+        <article id="secure-dash" class="proj card reveal-up sfx-hover">
+          <h3>Secure Dashboard</h3>
+          <p>Session-safe auth, data viz, and crisp feedback loops.</p>
+          <ul class="tags"><li>Auth</li><li>SPA/MPA</li><li>Perf</li></ul>
+        </article>
+        <article id="dev-tools" class="proj card reveal-up sfx-hover">
+          <h3>Dev Tools</h3>
+          <p>Perf tracers, lint/preset stacks, and CI motion checks.</p>
+          <ul class="tags"><li>Tooling</li><li>DX</li><li>Automation</li></ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="links">
+      <h2 class="section-title">My Websites</h2>
+      <div class="links-grid">
+        <a class="link-card sfx-hover" href="https://readora-yksx.onrender.com" target="_blank" rel="noopener noreferrer" aria-label="Readora website (opens in new tab)">
+          <span class="link-title">Readora</span>
+          <span class="link-external" aria-hidden="true">↗</span>
+        </a>
+
+        <a class="link-card sfx-hover" href="https://portfolio-jp5j.onrender.com" target="_blank" rel="noopener noreferrer" aria-label="Developer Tools website (opens in new tab)">
+          <span class="link-title">My Portfolio</span>
+          <span class="link-external" aria-hidden="true">↗</span>
+        </a>
+
+        <!-- <a class="link-card sfx-hover" href="https://dashboard.example.com" target="_blank" rel="noopener noreferrer" aria-label="Dashboard website (opens in new tab)">
+          <span class="link-title">Dashboard</span>
+          <span class="link-meta">dashboard.example.com</span>
+          <span class="link-external" aria-hidden="true">↗</span>
+        </a> -->
+      </div>
+    </section>
+
+    <footer class="footer">
+      <span>© 2025 Sachin</span>
+      <div class="social">
+        <a class="nav-link sfx-hover" href="https://github.com/sac-exe"><i class="fa-brands fa-github"></i> GitHub</a>
+        <a class="nav-link sfx-hover" href="https://www.instagram.com/s_c.exe?igsh=b3gyY3RqODR3b2cz"><i class="fa-brands fa-instagram"></i>Instagram</a>
+        <a class="nav-link sfx-hover" href="https://www.linkedin.com/in/sachin-sac"><i class="fa-brands fa-linkedin"></i> Linkedin</a>
+      </div>
+    </footer>
+  </main>
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    AOS.init();
+  });
+
+  document.addEventListener('barba:after', function() {
+    AOS.refresh();
+  });
+</script>
+</body>
+
+</html>
