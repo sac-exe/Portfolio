@@ -157,6 +157,40 @@ const SFX = (() => {
   raf();
 })();
 
+(() => { // Avatar 3D tilt + cursor-follow glow
+  if (!window.gsap) return;
+  const wrap = document.querySelector('.avatar-wrap');
+  const img = wrap?.querySelector('.avatar');
+  if (!wrap || !img) return;
+  // disable on touch devices
+  if (matchMedia && matchMedia('(pointer: coarse)').matches) return;
+
+  function onMove(e){
+    const rect = wrap.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const px = (x / rect.width) - 0.5; // -0.5 .. 0.5
+    const py = (y / rect.height) - 0.5;
+    const rotY = px * 12; // horizontal => rotateY
+    const rotX = -py * 10; // vertical => rotateX
+
+    gsap.to(img, { rotationY: rotY, rotationX: rotX, scale: 1.035, duration: 0.45, ease: 'power3.out' });
+    // update glow position
+    wrap.style.setProperty('--mx', `${x}px`);
+    wrap.style.setProperty('--my', `${y}px`);
+  }
+
+  function onLeave(){
+    gsap.to(img, { rotationY: 0, rotationX: 0, scale: 1, duration: 0.6, ease: 'power3.out' });
+    wrap.style.setProperty('--mx', '50%');
+    wrap.style.setProperty('--my', '50%');
+  }
+
+  wrap.addEventListener('pointermove', onMove, { passive: true });
+  wrap.addEventListener('pointerleave', onLeave);
+  wrap.addEventListener('pointercancel', onLeave);
+})();
+
 //custom loader animation for nav-link scroll
 document.querySelectorAll('.nav-link[href^="/#"]').forEach(link => {
   link.addEventListener('click', function(e) {
