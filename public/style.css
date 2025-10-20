@@ -20,6 +20,14 @@
   box-sizing:border-box;
   min-width:0;
 }
+
+*:not(input):not(textarea):not(select) {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
 html,
 body{
   height:100%;

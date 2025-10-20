@@ -191,6 +191,34 @@ const SFX = (() => {
   wrap.addEventListener('pointercancel', onLeave);
 })();
 
+(() => {
+  // Block common copy/paste and devtools key + context menu
+  document.addEventListener('keydown', e => {
+    const key = e.key?.toLowerCase();
+    const ctrl = e.ctrlKey || e.metaKey;
+    if (ctrl && (key === 'c' || key === 'v')) e.preventDefault();
+    if (e.key === 'F12') e.preventDefault();
+  }, false);
+
+  // Prevent copy / paste events
+  document.addEventListener('copy', e => e.preventDefault());
+  document.addEventListener('paste', e => e.preventDefault());
+
+  // Optional: block right-click menu
+  document.addEventListener('contextmenu', e => e.preventDefault());
+
+  // Prevent dragging images (delegated) and mark existing imgs non-draggable
+  document.addEventListener('dragstart', e => {
+    const t = e.target;
+    if (!t) return;
+    if (t.tagName === 'IMG' || t.closest && t.closest('img')) e.preventDefault();
+  }, false);
+
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('img').forEach(img => img.setAttribute('draggable', 'false'));
+  });
+})();
+
 //custom loader animation for nav-link scroll
 document.querySelectorAll('.nav-link[href^="/#"]').forEach(link => {
   link.addEventListener('click', function(e) {
