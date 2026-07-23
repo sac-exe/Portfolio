@@ -512,6 +512,45 @@ footer,
   color: #ffffff !important;
 }
 
+.lives-display {
+  font-family: monospace;
+  font-size: 1.1rem;
+}
+
+.hole {
+  height: 90px;
+  background-color: var(--surface-muted);
+  border: 3px solid var(--stroke);
+  box-shadow: 4px 4px 0 var(--shadow);
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.target {
+  font-size: 2.5rem;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 100%; /* Hidden off-screen by default */
+  transition: top 0.15s ease-in-out;
+  user-select: none;
+}
+
+.hole.up .target {
+  top: 0; /* Pops up */
+}
+
+/* Red Flash Effect when hitting a bomb */
+.hole.bomb-hit {
+  background-color: #ff0055 !important;
+  transition: background-color 0.1s ease;
+}
+
 /*Game bug style ended*/
 
 .hc-badge {

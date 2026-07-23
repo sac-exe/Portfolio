@@ -434,16 +434,15 @@ input.addEventListener('keydown', (e) => {
 
 const holes = document.querySelectorAll('.hole');
 const scoreBoard = document.getElementById('bug-score');
-const timerDisplay = document.getElementById('bug-timer');
+const livesDisplay = document.getElementById('bug-lives');
 const toggleBtn = document.getElementById('toggle-bug-game');
 const diffBtns = document.querySelectorAll('.btn-diff');
 
 let lastHole;
 let isPlaying = false;
 let score = 0;
-let countdown;
+let lives = 3;
 let peepTimeout;
-let timeLeft = 30;
 
 // Default Speed (Easy Mode)
 let minSpeed = 800;
@@ -463,12 +462,33 @@ function randomHole(holes) {
   return hole;
 }
 
-// Pop up bugs recursively
+// Render Heart Emoji Bar
+function updateLivesUI() {
+  if (lives === 3) livesDisplay.textContent = '❤️ ❤️ ❤️';
+  else if (lives === 2) livesDisplay.textContent = '❤️ ❤️ 🖤';
+  else if (lives === 1) livesDisplay.textContent = '❤️ 🖤 🖤';
+  else livesDisplay.textContent = '🖤 🖤 🖤';
+}
+
+// Pop up bugs or bombs recursively
 function peep() {
   if (!isPlaying) return;
   
   const speed = randomTime(minSpeed, maxSpeed);
   const hole = randomHole(holes);
+  const targetEl = hole.querySelector('.target');
+
+  // 25% chance to spawn a Bomb 💣, 75% chance for a Bug 🐛
+  const isBomb = Math.random() < 0.25;
+  
+  if (isBomb) {
+    targetEl.textContent = '💣';
+    hole.dataset.type = 'bomb';
+  } else {
+    targetEl.textContent = '🐛';
+    hole.dataset.type = 'bug';
+  }
+
   hole.classList.add('up');
   
   peepTimeout = setTimeout(() => {
@@ -477,41 +497,39 @@ function peep() {
   }, speed);
 }
 
+// Reset Score and UI
+function resetStats() {
+  score = 0;
+  lives = 3;
+  scoreBoard.textContent = 0;
+  updateLivesUI();
+}
+
 // Start Game
 function startGame() {
   isPlaying = true;
-  score = 0;
-  timeLeft = 30;
-  
-  scoreBoard.textContent = 0;
-  timerDisplay.textContent = 30;
+  resetStats();
   
   // UI Button Updates
   toggleBtn.textContent = 'Stop Game';
   toggleBtn.classList.add('btn-stop');
   
-  // Disable difficulty changes while playing
+  // Disable difficulty changes during gameplay
   diffBtns.forEach(btn => btn.disabled = true);
 
   peep();
-
-  countdown = setInterval(() => {
-    timeLeft--;
-    timerDisplay.textContent = timeLeft;
-    if (timeLeft <= 0) {
-      stopGame(true); // Game finished naturally
-    }
-  }, 1000);
 }
 
-// Stop Game (Manual or Time Expired)
-function stopGame(timeExpired = false) {
+// Stop Game
+function stopGame(gameOver = false) {
   isPlaying = false;
-  clearInterval(countdown);
   clearTimeout(peepTimeout);
   
   // Reset all holes
-  holes.forEach(hole => hole.classList.remove('up'));
+  holes.forEach(hole => {
+    hole.classList.remove('up');
+    hole.classList.remove('bomb-hit');
+  });
   
   // UI Button Resets
   toggleBtn.textContent = 'Start Game';
@@ -520,8 +538,8 @@ function stopGame(timeExpired = false) {
   // Re-enable difficulty buttons
   diffBtns.forEach(btn => btn.disabled = false);
 
-  if (timeExpired) {
-    alert(`Game Over! You patched ${score} bugs!`);
+  if (gameOver) {
+    alert(`💥 Game Over! You hit 3 bombs! Final Score: ${score}`);
   }
 }
 
@@ -534,13 +552,31 @@ toggleBtn.addEventListener('click', () => {
   }
 });
 
-// Bug Click Handler
+// Hole Click Handler (Bug vs Bomb logic)
 holes.forEach(hole => {
   hole.addEventListener('click', () => {
     if (hole.classList.contains('up') && isPlaying) {
-      score++;
-      scoreBoard.textContent = score;
-      hole.classList.remove('up');
+      const type = hole.dataset.type;
+
+      if (type === 'bug') {
+        score++;
+        scoreBoard.textContent = score;
+        hole.classList.remove('up');
+      } 
+      else if (type === 'bomb') {
+        lives--;
+        updateLivesUI();
+        
+        // Visual feedback for hitting a bomb
+        hole.classList.add('bomb-hit');
+        hole.classList.remove('up');
+        setTimeout(() => hole.classList.remove('bomb-hit'), 200);
+
+        // Game Over condition
+        if (lives <= 0) {
+          stopGame(true);
+        }
+      }
     }
   });
 });
@@ -548,7 +584,7 @@ holes.forEach(hole => {
 // Difficulty Mode Selector Handler
 diffBtns.forEach(btn => {
   btn.addEventListener('click', (e) => {
-    if (isPlaying) return; // Prevent switching mid-game
+    if (isPlaying) return; // Block switching mid-game
 
     // Update Highlighted Active Class
     diffBtns.forEach(b => b.classList.remove('active'));
@@ -557,5 +593,8 @@ diffBtns.forEach(btn => {
     // Update Speed Parameters
     minSpeed = parseInt(e.target.getAttribute('data-speed-min'));
     maxSpeed = parseInt(e.target.getAttribute('data-speed-max'));
+
+    // FIX: Immediately reset score and lives when changing mode
+    resetStats();
   });
 });
