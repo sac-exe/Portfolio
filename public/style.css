@@ -273,6 +273,7 @@ footer,
 
 .avatar-wrap {
   position     : relative;
+  height       : auto;
   width        : min(100%, 18rem);
   aspect-ratio : 4 / 3;
   overflow     : hidden;
