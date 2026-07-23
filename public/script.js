@@ -1,3 +1,39 @@
+// Theme preference: saved choice wins; otherwise the system preference is used.
+(() => {
+  const storageKey = 'portfolio-theme';
+  const root = document.documentElement;
+  function applyTheme(theme) {
+    root.dataset.theme = theme;
+    const toggle = document.querySelector('.theme-toggle');
+    const isDark = theme === 'dark';
+    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', isDark ? '#151515' : '#fafafa');
+    if (toggle) {
+      toggle.setAttribute('aria-pressed', String(isDark));
+      toggle.setAttribute('aria-label', `Switch to ${isDark ? 'light' : 'dark'} theme`);
+      toggle.innerHTML = `<i class="fa-solid fa-${isDark ? 'sun' : 'moon'}" aria-hidden="true"></i>`;
+    }
+  }
+  function initThemeToggle() {
+    const toggle = document.querySelector('.theme-toggle');
+    if (!toggle || toggle.dataset.themeBound) return;
+    applyTheme(root.dataset.theme || 'light');
+    toggle.dataset.themeBound = 'true';
+    toggle.addEventListener('click', () => {
+      const theme = root.dataset.theme === 'dark' ? 'light' : 'dark';
+      localStorage.setItem(storageKey, theme);
+      applyTheme(theme);
+    });
+  }
+  document.addEventListener('DOMContentLoaded', initThemeToggle);
+  document.addEventListener('barba:after', initThemeToggle);
+})();
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.avatar').forEach((avatar) => {
+    avatar.addEventListener('error', () => avatar.classList.add('is-fallback'), { once: true });
+  });
+});
+
 //animation.js
 (() => {
   if (!window.gsap) return;
@@ -146,7 +182,7 @@ const SFX = (() => {
     el.addEventListener('mouseleave', () => {
       el.style.transform = '';
       ring.style.width = '32px'; ring.style.height = '32px';
-      ring.style.borderColor = '#00000066';
+      ring.style.borderColor = 'var(--ring-color)';
       isHover = false;
     });
   }
@@ -297,5 +333,229 @@ document.querySelectorAll('.nav-link[href^="/#"]').forEach(link => {
     setTimeout(() => {
       target.scrollIntoView({ behavior: 'smooth' });
     }, 500); // Match total GSAP timeline duration
+  });
+});
+
+
+//terminal
+const input = document.getElementById('terminal-input');
+const output = document.getElementById('terminal-output');
+
+// Define your links here
+const SOCIAL_LINKS = {
+  instagram: "https://instagram.com/your_username",
+  linkedin: "https://linkedin.com/in/your_username",
+  github: "https://github.com/your_username",
+  email: "mailto:your.email@example.com",
+  resume: "/assets/docs/Sachin_Resume.pdf" // Path to your PDF file
+};
+
+const commands = {
+  help: `Available commands: 
+    <br>• <b>instagram</b> - Open Instagram profile
+    <br>• <b>linkedin</b> - Open LinkedIn profile
+    <br>• <b>github</b> - Open GitHub profile
+    <br>• <b>email</b> / <b>mail</b> - Send an email
+    <br>• <b>resume</b> / <b>download resume</b> - Download PDF resume
+    <br>• <b>whoami</b> - About me
+    <br>• <b>skills</b> - View tech stack
+    <br>• <b>clear</b> - Clear terminal screen`,
+    
+  whoami: "Sachin — Pentester & Red Teamer. BCA Student passionate about UI/UX and Security.",
+  skills: "HTML5, CSS3, JS, Node.js, MongoDB, React, Linux, Penetration Testing",
+  flag: "FLAG{byp4ss3d_th3_m4tr1x}"
+};
+
+input.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') {
+    const rawCmd = input.value.trim();
+    const cmd = rawCmd.toLowerCase();
+    
+    // Clear command line
+    input.value = '';
+
+    if (!cmd) return;
+
+    // Handle 'clear' command
+    if (cmd === 'clear') {
+      output.innerHTML = '';
+      return;
+    }
+
+    let response = '';
+
+    // 1. Handle Social Link Redirects
+    if (cmd === 'instagram' || cmd === 'linkedin' || cmd === 'github') {
+      const url = SOCIAL_LINKS[cmd];
+      window.open(url, '_blank');
+      response = `Opening ${cmd.toUpperCase()} in a new tab... <a href="${url}" target="_blank" style="color:var(--p2);">${url}</a>`;
+    } 
+    
+    // 2. Handle Mail Redirection
+    else if (cmd === 'email' || cmd === 'mail') {
+      window.location.href = SOCIAL_LINKS.email;
+      response = `Opening your default mail client (${SOCIAL_LINKS.email.replace('mailto:', '')})...`;
+    } 
+    
+    // 3. Handle Resume Download
+    else if (cmd === 'resume' || cmd === 'download resume') {
+      const link = document.createElement('a');
+      link.href = SOCIAL_LINKS.resume;
+      link.download = 'Sachin_Resume.pdf'; // File name when downloaded
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      response = `Downloading resume... If the download doesn't start automatically, <a href="${SOCIAL_LINKS.resume}" download style="color:var(--p2);">click here</a>.`;
+    } 
+    
+    // 4. Handle Text Commands (help, whoami, skills, etc.)
+    else if (commands[cmd]) {
+      response = commands[cmd];
+    } 
+    
+    // 5. Handle Unknown Commands
+    else {
+      response = `Command not found: <b>${rawCmd}</b>. Type <b>'help'</b> to see available options.`;
+    }
+
+    // Append command and response to terminal screen
+    output.innerHTML += `
+      <div style="margin-top: 8px;"><span class="prompt">> ${rawCmd}</span></div>
+      <div style="margin-bottom: 8px;">${response}</div>
+    `;
+    
+    // Auto-scroll to the bottom
+    output.scrollTop = output.scrollHeight;
+  }
+});
+
+
+//game-bug
+
+const holes = document.querySelectorAll('.hole');
+const scoreBoard = document.getElementById('bug-score');
+const timerDisplay = document.getElementById('bug-timer');
+const toggleBtn = document.getElementById('toggle-bug-game');
+const diffBtns = document.querySelectorAll('.btn-diff');
+
+let lastHole;
+let isPlaying = false;
+let score = 0;
+let countdown;
+let peepTimeout;
+let timeLeft = 30;
+
+// Default Speed (Easy Mode)
+let minSpeed = 800;
+let maxSpeed = 1200;
+
+// Helper: Random time within active difficulty range
+function randomTime(min, max) {
+  return Math.round(Math.random() * (max - min) + min);
+}
+
+// Helper: Select random hole without repeating previous
+function randomHole(holes) {
+  const idx = Math.floor(Math.random() * holes.length);
+  const hole = holes[idx];
+  if (hole === lastHole) return randomHole(holes);
+  lastHole = hole;
+  return hole;
+}
+
+// Pop up bugs recursively
+function peep() {
+  if (!isPlaying) return;
+  
+  const speed = randomTime(minSpeed, maxSpeed);
+  const hole = randomHole(holes);
+  hole.classList.add('up');
+  
+  peepTimeout = setTimeout(() => {
+    hole.classList.remove('up');
+    if (isPlaying) peep();
+  }, speed);
+}
+
+// Start Game
+function startGame() {
+  isPlaying = true;
+  score = 0;
+  timeLeft = 30;
+  
+  scoreBoard.textContent = 0;
+  timerDisplay.textContent = 30;
+  
+  // UI Button Updates
+  toggleBtn.textContent = 'Stop Game';
+  toggleBtn.classList.add('btn-stop');
+  
+  // Disable difficulty changes while playing
+  diffBtns.forEach(btn => btn.disabled = true);
+
+  peep();
+
+  countdown = setInterval(() => {
+    timeLeft--;
+    timerDisplay.textContent = timeLeft;
+    if (timeLeft <= 0) {
+      stopGame(true); // Game finished naturally
+    }
+  }, 1000);
+}
+
+// Stop Game (Manual or Time Expired)
+function stopGame(timeExpired = false) {
+  isPlaying = false;
+  clearInterval(countdown);
+  clearTimeout(peepTimeout);
+  
+  // Reset all holes
+  holes.forEach(hole => hole.classList.remove('up'));
+  
+  // UI Button Resets
+  toggleBtn.textContent = 'Start Game';
+  toggleBtn.classList.remove('btn-stop');
+  
+  // Re-enable difficulty buttons
+  diffBtns.forEach(btn => btn.disabled = false);
+
+  if (timeExpired) {
+    alert(`Game Over! You patched ${score} bugs!`);
+  }
+}
+
+// Toggle Button Click Handler
+toggleBtn.addEventListener('click', () => {
+  if (isPlaying) {
+    stopGame(false);
+  } else {
+    startGame();
+  }
+});
+
+// Bug Click Handler
+holes.forEach(hole => {
+  hole.addEventListener('click', () => {
+    if (hole.classList.contains('up') && isPlaying) {
+      score++;
+      scoreBoard.textContent = score;
+      hole.classList.remove('up');
+    }
+  });
+});
+
+// Difficulty Mode Selector Handler
+diffBtns.forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    if (isPlaying) return; // Prevent switching mid-game
+
+    // Update Highlighted Active Class
+    diffBtns.forEach(b => b.classList.remove('active'));
+    e.target.classList.add('active');
+
+    // Update Speed Parameters
+    minSpeed = parseInt(e.target.getAttribute('data-speed-min'));
+    maxSpeed = parseInt(e.target.getAttribute('data-speed-max'));
   });
 });

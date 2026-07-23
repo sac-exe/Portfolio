@@ -1,16 +1,23 @@
 <!doctype html>
-<html lang="en" data-barba="wrapper">
+<html lang="en" data-barba="wrapper" data-theme="light">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Sachin — Pentester | Portfolio</title>
   <meta name="theme-color" content="#fafafa" />
+  <script>
+    (() => {
+      const savedTheme = localStorage.getItem('portfolio-theme');
+      const theme = savedTheme || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.dataset.theme = theme;
+    })();
+  </script>
   <link rel="icon" href="/assets/tab_icon/SAC.png" type="image/png" sizes="32x32">
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
   <link rel="stylesheet" href="style.css" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  
+
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
   <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
@@ -27,13 +34,16 @@
   </div>
 
   <main data-barba="container" data-barba-namespace="home">
-    <header class="nav">
+    <header class="nav fixed-top">
       <a class="brand sfx-click" href="/">Sachin <span aria-hidden="true">·</span> Portfolio</a>
-      <nav class="nav-links">
+      <nav class="nav-links ">
         <a class="nav-link sfx-hover sfx-click" href="/#skills"><i class="fa-solid fa-computer"></i>Skills</a>
         <a class="nav-link sfx-hover sfx-click" href="/#about"><i class="fa-regular fa-address-card"></i>About</a>
         <a class="nav-link sfx-hover sfx-click" href="/#contact"><i class="fa-regular fa-user"></i>Contact</a>
         <a class="nav-link sfx-hover sfx-click" href="/assets/doc/Resume_Sachin.pdf" target="_blank" rel="noopener"><i class="fa-regular fa-file"></i>Resume</a>
+        <button class="theme-toggle sfx-click" type="button" aria-label="Switch to dark theme" aria-pressed="false">
+          <i class="fa-solid fa-moon" aria-hidden="true"></i>
+        </button>
       </nav>
     </header>
 
@@ -41,7 +51,7 @@
       <div class="hero-left">
         <div class="id-row" aria-label="Identity">
           <div class="avatar-wrap">
-            <img class="avatar" src="/assets/img/SAC.png" alt="Portrait of Sachin" width="8rem" height="4rem" />
+            <img class="avatar" src="/assets/img/SAC.png" alt="Portrait of Sachin" />
           </div>
           <div class="id-meta">
             <h1>
@@ -87,38 +97,6 @@
           </ul>
         </div>
         <div class="hero-sticker">Available</div>
-      </div>
-    </section>
-
-    <!-- NEW: SPOTIFY-LIKE MUSIC PLAYER SECTION (vinyl + disk rotating) -->
-    <section class="section music-player-section" id="music-player">
-      <h2 class="section-title">Chill Tunes <i class="fa-solid fa-headphones" style="font-size:1.2rem;"></i></h2>
-      <div class="vinyl-player card">
-        <div class="vinyl-visual">
-          <div class="vinyl-disk" id="vinylDisk">
-            <div class="disk-center"></div>
-            <div class="disk-ring"></div>
-            <div class="disk-label">
-              <img id="albumArtImg" class="album-art-img" src="https://picsum.photos/id/100/200/200" alt="album art">
-            </div>
-          </div>
-        </div>
-        <div class="player-controls-area">
-          <div class="track-info">
-            <h3 id="trackTitle">Lofi Vibes</h3>
-            <p id="trackArtist">Chill Beats</p>
-          </div>
-          <div class="player-buttons">
-            <button class="player-btn skip-back" id="prevTrackBtn" aria-label="Previous track"><i class="fa-solid fa-backward-step"></i></button>
-            <button class="player-btn play-pause" id="playPauseBtn" aria-label="Play/Pause"><i class="fa-solid fa-play"></i></button>
-            <button class="player-btn skip-forward" id="nextTrackBtn" aria-label="Next track"><i class="fa-solid fa-forward-step"></i></button>
-          </div>
-          <div class="progress-container">
-            <span class="time-current" id="currentTime">0:00</span>
-            <input type="range" id="progressSlider" class="progress-slider" value="0" step="1" min="0" max="100">
-            <span class="time-duration" id="durationTime">0:00</span>
-          </div>
-        </div>
       </div>
     </section>
 
@@ -182,6 +160,26 @@
       </div>
     </section>
 
+    <section class="game-section my-5">
+      <h2 class="section-title">Terminal Challenge <span>[CTF]</span></h2>
+      
+      <div class="terminal-card card">
+        <div class="terminal-header">
+          <span class="dot red"></span>
+          <span class="dot yellow"></span>
+          <span class="dot green"></span>
+          <span class="terminal-title">root@sachin-sec:~#</span>
+        </div>
+        <div class="terminal-body" id="terminal-output">
+          <p>Type <span class="highlight">'help'</span> to view available commands or find the hidden flag!</p>
+        </div>
+        <div class="terminal-input-line">
+          <span class="prompt">></span>
+          <input type="text" id="terminal-input" placeholder="Enter command..." autofocus />
+        </div>
+      </div>
+    </section>
+
     <section class="section" id="about">
       <h2 class="section-title">About</h2>
       <div class="about-grid card">
@@ -209,6 +207,37 @@
       </div>
     </section>
 
+    <section class="bug-game-section my-5">
+      <h2 class="section-title">Bug Hunter <span>[Minigame]</span></h2>
+      
+      <div class="game-container card">
+        <!-- Difficulty Selector -->
+        <div class="difficulty-selector mb-3">
+          <span class="diff-label">Mode:</span>
+          <button class="btn-diff active" data-speed-min="800" data-speed-max="1200">Easy</button>
+          <button class="btn-diff" data-speed-min="500" data-speed-max="800">Intermediate</button>
+          <button class="btn-diff" data-speed-min="250" data-speed-max="450">Hard</button>
+        </div>
+
+        <!-- Stats & Game Control Button -->
+        <div class="game-stats">
+          <span>Score: <b id="bug-score">0</b></span>
+          <span>Time: <b id="bug-timer">30</b>s</span>
+          <button id="toggle-bug-game" class="button btn-sm">Start Game</button>
+        </div>
+
+        <!-- Bug Grid -->
+        <div class="bug-grid">
+          <div class="hole" data-id="1"><div class="bug">🐛</div></div>
+          <div class="hole" data-id="2"><div class="bug">🐛</div></div>
+          <div class="hole" data-id="3"><div class="bug">🐛</div></div>
+          <div class="hole" data-id="4"><div class="bug">🐛</div></div>
+          <div class="hole" data-id="5"><div class="bug">🐛</div></div>
+          <div class="hole" data-id="6"><div class="bug">🐛</div></div>
+        </div>
+      </div>
+    </section>
+
     <section class="section contact" id="contact">
       <h2 class="section-title">Contact</h2>
       <div class="card contact-card">
@@ -226,396 +255,5 @@
     </section>
   </main>
 
-  <!-- AUDIO ENGINE + SFX + MUSIC PLAYER SCRIPT (separate music logic) -->
-  <script>
-    // ------------------------------------------------------------------
-    // MUSIC PLAYER: custom spotify-like player with rotating disk + playlist
-    // ------------------------------------------------------------------
-    (function MusicPlayer() {
-      // Playlist data (track objects)
-      const playlist = [
-        {
-          title: "Lofi Dreams",
-          artist: "Purrple Cat",
-          // cover: "https://source.unsplash.com/featured/200x200?lofi,vinyl",
-          // src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
-        },
-        {
-          title: "Chillhop Essence",
-          artist: "Blue Wednesday",
-          // cover: "https://source.unsplash.com/featured/200x200?chill,music",
-          // src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3"
-        },
-        {
-          title: "Midnight Coding",
-          artist: "Jazzinuf",
-          // cover: "https://source.unsplash.com/featured/200x200?coding,night",
-          // src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3"
-        },
-        {
-          title: "Neon Nights",
-          artist: "Engelwood",
-        //   cover: "https://source.unsplash.com/featured/200x200?neon,city",
-        //   src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3"
-        // }
-      ];
-      
-      let currentTrackIndex = 0;
-      let isPlaying = false;
-      let audio = null;   // will be initialized on first user interaction
-      let diskSpinAnimation = null;
-      let updateInterval = null;
-      
-      // DOM elements
-      const playPauseBtn = document.getElementById('playPauseBtn');
-      const prevBtn = document.getElementById('prevTrackBtn');
-      const nextBtn = document.getElementById('nextTrackBtn');
-      const trackTitleEl = document.getElementById('trackTitle');
-      const trackArtistEl = document.getElementById('trackArtist');
-      const albumArtImg = document.getElementById('albumArtImg');
-      const progressSlider = document.getElementById('progressSlider');
-      const currentTimeEl = document.getElementById('currentTime');
-      const durationTimeEl = document.getElementById('durationTime');
-      const vinylDisk = document.getElementById('vinylDisk');
-      
-      // Helper: format seconds to mm:ss
-      function formatTime(seconds) {
-        if (isNaN(seconds)) return '0:00';
-        const mins = Math.floor(seconds / 60);
-        const secs = Math.floor(seconds % 60);
-        return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
-      }
-      
-      // Load track data to UI
-      function loadTrack(index) {
-        const track = playlist[index % playlist.length];
-        trackTitleEl.textContent = track.title;
-        trackArtistEl.textContent = track.artist;
-        albumArtImg.src = track.cover;
-        albumArtImg.alt = `${track.title} cover`;
-        if (audio) {
-          const wasPlaying = !audio.paused;
-          audio.src = track.src;
-          audio.load();
-          if (wasPlaying && isPlaying) {
-            audio.play().catch(e => console.log("autoplay blocked?"));
-          }
-          updateProgressOnLoad();
-        }
-        // Reset disk rotation if not playing? but we keep style, later will be handled by playing state
-        if (!isPlaying && vinylDisk) {
-          vinylDisk.style.animationPlayState = 'paused';
-        } else if (isPlaying && vinylDisk) {
-          vinylDisk.style.animationPlayState = 'running';
-        }
-      }
-      
-      function updateProgressOnLoad() {
-        if (!audio) return;
-        audio.addEventListener('loadedmetadata', () => {
-          if (durationTimeEl) durationTimeEl.textContent = formatTime(audio.duration);
-          progressSlider.max = audio.duration;
-          progressSlider.value = 0;
-        }, { once: true });
-        audio.addEventListener('timeupdate', updateProgress);
-      }
-      
-      function updateProgress() {
-        if (!audio) return;
-        const current = audio.currentTime;
-        const duration = audio.duration || 0;
-        progressSlider.value = current;
-        currentTimeEl.textContent = formatTime(current);
-        if (duration && !isNaN(duration)) {
-          durationTimeEl.textContent = formatTime(duration);
-          progressSlider.max = duration;
-        }
-      }
-      
-      function seekTo(value) {
-        if (audio && !isNaN(audio.duration)) {
-          audio.currentTime = parseFloat(value);
-          updateProgress();
-        }
-      }
-      
-      // Sync disk rotation + play/pause icon
-      function syncPlaybackUI() {
-        if (!playPauseBtn) return;
-        const icon = playPauseBtn.querySelector('i');
-        if (isPlaying && audio && !audio.paused) {
-          icon.className = 'fa-solid fa-pause';
-          if (vinylDisk) vinylDisk.style.animationPlayState = 'running';
-        } else {
-          icon.className = 'fa-solid fa-play';
-          if (vinylDisk) vinylDisk.style.animationPlayState = 'paused';
-        }
-      }
-      
-      function togglePlay() {
-        if (!audio) {
-          // initialize audio on first click (to comply with browser autoplay policies)
-          initAudioAndPlay();
-          return;
-        }
-        if (isPlaying) {
-          audio.pause();
-          isPlaying = false;
-        } else {
-          audio.play().catch(e => console.warn("play failed:", e));
-          isPlaying = true;
-        }
-        syncPlaybackUI();
-      }
-      
-      function initAudioAndPlay() {
-        if (audio) return;
-        audio = new Audio();
-        audio.preload = 'metadata';
-        // bind events
-        audio.addEventListener('ended', () => {
-          // auto play next
-          nextTrack();
-        });
-        audio.addEventListener('play', () => {
-          isPlaying = true;
-          syncPlaybackUI();
-          if (updateInterval === null) {
-            updateInterval = setInterval(() => {
-              if (audio && !audio.paused) updateProgress();
-            }, 500);
-          }
-        });
-        audio.addEventListener('pause', () => {
-          isPlaying = false;
-          syncPlaybackUI();
-        });
-        // load current track
-        const track = playlist[currentTrackIndex];
-        audio.src = track.src;
-        audio.load();
-        // after load, try to play (only if togglePlay called)
-        audio.play().then(() => {
-          isPlaying = true;
-          syncPlaybackUI();
-        }).catch(err => {
-          console.log("Autoplay prevented, waiting for user interaction");
-          isPlaying = false;
-          syncPlaybackUI();
-        });
-        updateProgressOnLoad();
-      }
-      
-      function nextTrack() {
-        if (!audio) {
-          currentTrackIndex = (currentTrackIndex + 1) % playlist.length;
-          loadTrack(currentTrackIndex);
-          initAudioAndPlay();
-        } else {
-          currentTrackIndex = (currentTrackIndex + 1) % playlist.length;
-          const wasPlaying = !audio.paused;
-          loadTrack(currentTrackIndex);
-          if (wasPlaying) {
-            audio.play().catch(e => console.log("play error on next"));
-            isPlaying = true;
-          } else {
-            isPlaying = false;
-          }
-          syncPlaybackUI();
-        }
-      }
-      
-      function prevTrack() {
-        if (!audio) {
-          currentTrackIndex = (currentTrackIndex - 1 + playlist.length) % playlist.length;
-          loadTrack(currentTrackIndex);
-          initAudioAndPlay();
-        } else {
-          currentTrackIndex = (currentTrackIndex - 1 + playlist.length) % playlist.length;
-          const wasPlaying = !audio.paused;
-          loadTrack(currentTrackIndex);
-          if (wasPlaying) {
-            audio.play().catch(e => console.log("play error on prev"));
-            isPlaying = true;
-          } else {
-            isPlaying = false;
-          }
-          syncPlaybackUI();
-        }
-      }
-      
-      // Event listeners
-      if (playPauseBtn) playPauseBtn.addEventListener('click', togglePlay);
-      if (nextBtn) nextBtn.addEventListener('click', nextTrack);
-      if (prevBtn) prevBtn.addEventListener('click', prevTrack);
-      if (progressSlider) {
-        progressSlider.addEventListener('input', (e) => {
-          if (audio) seekTo(e.target.value);
-        });
-        progressSlider.addEventListener('change', (e) => {
-          if (audio) seekTo(e.target.value);
-        });
-      }
-      
-      // preload first track meta only on hover or page load (no auto play)
-      function preloadMetadata() {
-        const tempAudio = new Audio();
-        tempAudio.src = playlist[0].src;
-        tempAudio.load();
-      }
-      preloadMetadata();
-      
-      // initial UI load first track data without playing
-      loadTrack(0);
-      // set placeholder animation: define keyframes inside style but ensure disk rotates
-      if (vinylDisk) {
-        vinylDisk.style.animation = 'spinRecord 6s linear infinite';
-        vinylDisk.style.animationPlayState = 'paused';
-      }
-      // optional: barba reinit? not needed for this section but we keep functional
-      window.musicPlayerRefresh = function() {
-        if (audio && !audio.paused) syncPlaybackUI();
-      };
-    })();
-  </script>
-
-  <script>
-    // Legacy scripts: animation, audio engine, sfx, cursor, etc. (original code merged)
-    document.addEventListener('DOMContentLoaded', function() { AOS.init(); });
-    document.addEventListener('barba:after', function() { AOS.refresh(); });
-    
-    // Animation & gsap
-    (function() {
-      if (!window.gsap) return;
-      gsap.registerPlugin(ScrollTrigger);
-      const splitLines = (el) => {
-        const text = el.textContent;
-        el.setAttribute('data-text', text);
-        const words = text.split(' ');
-        el.innerHTML = words.map(w => `<span class="word"><span class="char">${w}&nbsp;</span></span>`).join('');
-      };
-      function hero() {
-        document.querySelectorAll('.split-lines').forEach(splitLines);
-        const tl = gsap.timeline({ defaults:{ ease:'power3.out' }});
-        tl.from('.hero .word .char', { yPercent:110, opacity:0, stagger:0.02, duration:0.75 }, 0)
-          .from('.hero .button', { y:14, opacity:0, stagger:0.06, duration:0.45 }, 0.1)
-          .from('.hero-card', { y:16, opacity:0, duration:0.5 }, 0.1)
-          .from('.hero-sticker', { rotation:-12, scale:0.8, opacity:0, duration:0.4 }, 0.15);
-      }
-      function reveal() {
-        document.querySelectorAll('.reveal-up').forEach(el => {
-          gsap.from(el, { y:20, opacity:0, duration:0.6, ease:'power2.out', scrollTrigger:{ trigger:el, start:'top 85%', toggleActions:'play none none reverse' } });
-        });
-      }
-      function initAnim(){ hero(); reveal(); }
-      document.addEventListener('DOMContentLoaded', initAnim);
-      document.addEventListener('barba:after', () => { ScrollTrigger.getAll().forEach(t => t.kill()); initAnim(); ScrollTrigger.refresh(); });
-    })();
-    
-    // AudioEngine + SFX (unchanged, but safe)
-    const AudioEngine = (() => {
-      const Ctx = window.AudioContext || window.webkitAudioContext;
-      const ctx = new Ctx();
-      const mainGain = ctx.createGain();
-      mainGain.gain.value = 0.9;
-      mainGain.connect(ctx.destination);
-      const buffers = new Map();
-      let unlocked = false;
-      async function load(url){
-        if (buffers.has(url)) return buffers.get(url);
-        const res = await fetch(url);
-        const arr = await res.arrayBuffer();
-        const buf = await ctx.decodeAudioData(arr);
-        buffers.set(url, buf);
-        return buf;
-      }
-      function play(url, { volume=0.55, rate=1 } = {}){
-        if (!unlocked) return;
-        const buf = buffers.get(url);
-        if (!buf) return;
-        const src = ctx.createBufferSource();
-        src.buffer = buf; src.playbackRate.value = rate;
-        const g = ctx.createGain(); g.gain.value = volume;
-        src.connect(g).connect(mainGain); src.start(0);
-      }
-      function unlock(){
-        if (ctx.state === 'suspended') ctx.resume();
-        unlocked = true;
-        document.removeEventListener('pointerdown', unlock);
-        document.removeEventListener('keydown', unlock);
-      }
-      document.addEventListener('pointerdown', unlock, { once:true, passive:true });
-      document.addEventListener('keydown', unlock, { once:true });
-      document.addEventListener('barba:after', () => { if (ctx.state === 'suspended') ctx.resume(); });
-      return { load, play, ctx };
-    })();
-    
-    const SFX = (() => {
-      const MAP = { click: 'assets/sfx/click1.mp3', click2: 'assets/sfx/click2.mp3', hover: 'assets/sfx/hover.mp3', submit: 'assets/sfx/submit.mp3' };
-      async function preload(){ await Promise.all(Object.values(MAP).map(u => AudioEngine.load(u))); }
-      function bind(){
-        document.querySelectorAll('.sfx-click').forEach(el => el.addEventListener('click', () => AudioEngine.play(MAP.click, { volume:.55, rate:1+Math.random()*0.04 })));
-        document.querySelectorAll('.sfx-hover').forEach(el => el.addEventListener('mouseenter', () => AudioEngine.play(MAP.hover, { volume:.35 }), { passive:true }));
-        const form = document.querySelector('form.sfx-form');
-        if (form) form.addEventListener('submit', () => AudioEngine.play(MAP.submit, { volume:.6 }));
-      }
-      document.addEventListener('DOMContentLoaded', async () => { await preload(); bind(); });
-      document.addEventListener('barba:after', bind);
-      return { preload, bind };
-    })();
-    
-    // cursor.js & avatar tilt (simplified)
-    (function cursorInit() {
-      const dot = document.querySelector('.cursor-dot');
-      const ring = document.querySelector('.cursor-ring');
-      if (!dot && !ring) return;
-      // disabled to avoid console noise, but keep original safe
-    })();
-    
-    // info-card, loader, etc (preserve)
-    (function infoCard() {
-      const icon = document.getElementById('infoskill');
-      const card = document.getElementById('infoskill-card');
-      if (!icon || !card) return;
-      let hideTimeout = 0;
-      const isCoarse = matchMedia && matchMedia('(pointer: coarse)').matches;
-      function show() { window.clearTimeout(hideTimeout); card.classList.add('visible'); card.setAttribute('aria-hidden', 'false'); }
-      function hide() { window.clearTimeout(hideTimeout); card.classList.remove('visible'); card.setAttribute('aria-hidden', 'true'); }
-      function delayedHide() { hideTimeout = window.setTimeout(hide, 200); }
-      icon.addEventListener('mouseenter', () => { if (!isCoarse) show(); });
-      icon.addEventListener('mouseleave', () => { if (!isCoarse) delayedHide(); });
-      card.addEventListener('mouseenter', () => { if (!isCoarse) show(); });
-      card.addEventListener('mouseleave', () => { if (!isCoarse) delayedHide(); });
-      icon.addEventListener('click', e => { e.stopPropagation(); card.classList.toggle('visible'); card.setAttribute('aria-hidden', card.classList.contains('visible') ? 'false' : 'true'); });
-      card.querySelector('.info-card-close')?.addEventListener('click', () => hide());
-      document.addEventListener('click', (e) => { if (!icon.contains(e.target) && !card.contains(e.target)) hide(); });
-      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') hide(); });
-    })();
-    
-    // smooth scroll nav links loader
-    document.querySelectorAll('.nav-link[href^="/#"]').forEach(link => {
-      link.addEventListener('click', function(e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href').replace('/#', '');
-        const target = document.getElementById(targetId);
-        if (!target) return;
-        const loader = document.querySelector('.loader');
-        const lb1 = document.querySelector('.loader-block.lb1');
-        const lb2 = document.querySelector('.loader-block.lb2');
-        const lb3 = document.querySelector('.loader-block.lb3');
-        if (!loader) return;
-        gsap.set(lb1, { y: 0 });
-        gsap.set(lb2, { y: '100%' });
-        gsap.set(lb3, { y: '100%' });
-        loader.classList.add('active');
-        gsap.timeline()
-          .set(loader, { autoAlpha: 1 })
-          .to(lb2, { y: 0, duration: 0.15, ease: 'power2.inOut' }, "+=0.18")
-          .to(lb3, { y: 0, duration: 0.15, ease: 'power2.inOut' }, "+=0.18")
-          .to(loader, { autoAlpha: 0, duration: 0.18, onComplete: () => loader.classList.remove('active') }, "+=0.22");
-        setTimeout(() => { target.scrollIntoView({ behavior: 'smooth' }); }, 500);
-      });
-    });
-  </script>
 </body>
 </html>
