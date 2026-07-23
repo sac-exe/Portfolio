@@ -343,10 +343,10 @@ const output = document.getElementById('terminal-output');
 
 // Define your links here
 const SOCIAL_LINKS = {
-  instagram: "https://instagram.com/your_username",
-  linkedin: "https://linkedin.com/in/your_username",
-  github: "https://github.com/your_username",
-  email: "mailto:your.email@example.com",
+  instagram: "https://www.instagram.com/s_c.exe?igsh=b3gyY3RqODR3b2cz",
+  linkedin: "https://www.linkedin.com/in/sachin-sac/",
+  github: "https://github.com/sac-exe/",
+  email: "mailto:sachinjrwork@gmail.com",
   resume: "/assets/docs/Sachin_Resume.pdf" // Path to your PDF file
 };
 
