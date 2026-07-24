@@ -36,27 +36,33 @@
 }
 
 [data-theme="dark"] {
-  color-scheme         : dark;
-  
+  color-scheme: dark;
+
   /* 1. ULTRA-DARK BACKGROUND */
-  --bg                 : #08080a; /* Pitch black background for extreme depth */
-  --ink                : #ffffff; /* Crisp white text */
-  --text-main          : var(--ink);
-  --text-muted         : #b0b5c5; /* Sharp readable grey */
-  --text-subtle        : #e0e4f0;
-  
+  --bg         : #08080a;
+  /* Pitch black background for extreme depth */
+  --ink        : #ffffff;
+  /* Crisp white text */
+  --text-main  : var(--ink);
+  --text-muted : #b0b5c5;
+  /* Sharp readable grey */
+  --text-subtle: #e0e4f0;
+
   /* 2. DISTINCT ELEVATED CARDS */
-  --card               : #161722; /* Deep slate card background */
-  --card-bg            : var(--card);
-  --surface-muted      : #222436;
-  --surface-track      : #32354e;
+  --card         : #161722;
+  /* Deep slate card background */
+  --card-bg      : var(--card);
+  --surface-muted: #222436;
+  --surface-track: #32354e;
 
   /* 3. HARD OUTLINES & HEAVY PURE BLACK SHADOWS */
-  --stroke             : #ffdd00; /* Sharp electric cyan outline */
-  --stroke-color       : var(--stroke);
-  --shadow             : #000000; /* Solid deep black shadow for maximum 3D lift */
-  --shadow-color       : var(--shadow);
-  
+  --stroke      : #ffdd00;
+  /* Sharp electric cyan outline */
+  --stroke-color: var(--stroke);
+  --shadow      : #000000;
+  /* Solid deep black shadow for maximum 3D lift */
+  --shadow-color: var(--shadow);
+
   --shadow-soft        : rgba(0, 0, 0, 0.95);
   --shadow-inset       : rgba(0, 0, 0, 0.8);
   --light-overlay      : rgba(0, 240, 255, 0.15);
@@ -68,18 +74,24 @@
   --disk-middle        : #12131c;
 
   /* 4. SATURATED & BOLD DARK-MODE NEONS (Replaced wash-out yellow & pale tones) */
-  --p1                 : #ff0055; /* Hot Crimson Red (Replaces glaring yellow cards) */
-  --p2                 : #00f0ff; /* Electric Cyan */
-  --p3                 : #7000ff; /* Deep Electric Purple */
-  --p4                 : #00ff66; /* Toxic Lime Green */
-  --p5                 : #ff00aa; /* Neon Magenta */
-  --p6                 : #ff6600; /* Blaze Orange */
-  --accent-deep        : #d60047;
+  --p1         : #ff0055;
+  /* Hot Crimson Red (Replaces glaring yellow cards) */
+  --p2         : #00f0ff;
+  /* Electric Cyan */
+  --p3         : #7000ff;
+  /* Deep Electric Purple */
+  --p4         : #00ff66;
+  /* Toxic Lime Green */
+  --p5         : #ff00aa;
+  /* Neon Magenta */
+  --p6         : #ff6600;
+  /* Blaze Orange */
+  --accent-deep: #d60047;
 
-  --step-0             : clamp(.95rem, .8rem + .6vw, 1.1rem);
-  --step-1             : clamp(1.1rem, .95rem + .9vw, 1.5rem);
-  --step-2             : clamp(1.4rem, 1.05rem + 1.8vw, 2.1rem);
-  --step-3             : clamp(2rem, 1.3rem + 3.6vw, 3.2rem);
+  --step-0: clamp(.95rem, .8rem + .6vw, 1.1rem);
+  --step-1: clamp(1.1rem, .95rem + .9vw, 1.5rem);
+  --step-2: clamp(1.4rem, 1.05rem + 1.8vw, 2.1rem);
+  --step-3: clamp(2rem, 1.3rem + 3.6vw, 3.2rem);
 }
 
 * {
@@ -382,34 +394,35 @@ footer,
 
 /* ==================== TERMINAL INPUT STYLING ==================== */
 .terminal-input-line {
-  display: flex;
+  display    : flex;
   align-items: center;
-  gap: 8px;
-  padding: 8px 12px;
-  background: transparent;
+  gap        : 8px;
+  padding    : 8px 12px;
+  background : transparent;
 }
 
 .terminal-input-line .prompt {
-  color: var(--p1); /* Uses your active theme's accent color */
+  color      : var(--p1);
+  /* Uses your active theme's accent color */
   font-weight: bold;
   font-family: monospace;
 }
 
 .terminal-input-line input {
-  flex: 1;
-  background: transparent !important;
-  border: none !important;
-  outline: none !important;
-  color: var(--ink);
+  flex       : 1;
+  background : transparent !important;
+  border     : none !important;
+  outline    : none !important;
+  color      : var(--ink);
   font-family: monospace;
-  font-size: 1rem;
-  box-shadow: none !important;
+  font-size  : 1rem;
+  box-shadow : none !important;
 }
 
 /* Remove default focus rings across browsers */
 .terminal-input-line input:focus {
-  outline: none !important;
-  border: none !important;
+  outline   : none !important;
+  border    : none !important;
   box-shadow: none !important;
 }
 
@@ -418,140 +431,320 @@ footer,
 
 /* ==================== BUG GAME STYLES ==================== */
 .game-container {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 20px;
+  max-width : 600px;
+  margin    : 0 auto;
+  padding   : 20px;
   text-align: center;
 }
 
 .game-stats {
-  display: flex;
+  display        : flex;
   justify-content: space-between;
-  align-items: center;
-  font-family: monospace;
-  font-size: 1.1rem;
-  margin-bottom: 20px;
+  align-items    : center;
+  font-family    : monospace;
+  font-size      : 1.1rem;
+  margin-bottom  : 20px;
 }
 
 .bug-grid {
-  display: grid;
+  display              : grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 15px;
+  gap                  : 15px;
 }
 
 .hole {
-  height: 90px;
+  height          : 90px;
   background-color: var(--surface-muted);
-  border: 3px solid var(--stroke);
-  box-shadow: 4px 4px 0 var(--shadow);
-  position: relative;
-  overflow: hidden;
-  border-radius: 8px;
-  cursor: pointer;
+  border          : 3px solid var(--stroke);
+  box-shadow      : 4px 4px 0 var(--shadow);
+  position        : relative;
+  overflow        : hidden;
+  border-radius   : 8px;
+  cursor          : pointer;
 }
 
 .bug {
-  font-size: 2.5rem;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
+  font-size      : 2.5rem;
+  position       : absolute;
+  width          : 100%;
+  height         : 100%;
+  display        : flex;
+  align-items    : center;
   justify-content: center;
-  top: 100%; /* Hidden by default */
-  transition: top 0.15s ease-in-out;
-  user-select: none;
+  top            : 100%;
+  /* Hidden by default */
+  transition     : top 0.15s ease-in-out;
+  user-select    : none;
 }
 
 .hole.up .bug {
-  top: 0; /* Pops up */
+  top: 0;
+  /* Pops up */
 }
 
 .difficulty-selector {
-  display: flex;
-  align-items: center;
+  display        : flex;
+  align-items    : center;
   justify-content: center;
-  gap: 10px;
-  margin-bottom: 15px;
+  gap            : 10px;
+  margin-bottom  : 15px;
 }
 
 .diff-label {
   font-family: monospace;
   font-weight: bold;
-  color: var(--text-muted);
+  color      : var(--text-muted);
 }
 
 .btn-diff {
-  background: var(--surface-muted);
-  color: var(--ink);
-  border: 2px solid var(--stroke);
-  padding: 4px 12px;
+  background : var(--surface-muted);
+  color      : var(--ink);
+  border     : 2px solid var(--stroke);
+  padding    : 4px 12px;
   font-family: monospace;
   font-weight: bold;
-  cursor: pointer;
-  box-shadow: 2px 2px 0 var(--shadow);
-  transition: all 0.15s ease;
+  cursor     : pointer;
+  box-shadow : 2px 2px 0 var(--shadow);
+  transition : all 0.15s ease;
 }
 
 .btn-diff:hover {
-  transform: translate(-1px, -1px);
+  transform : translate(-1px, -1px);
   box-shadow: 3px 3px 0 var(--shadow);
 }
 
 /* Highlighted Active Mode Button */
 .btn-diff.active {
-  background: var(--p1); /* Highlights with theme accent color */
-  color: #000;
+  background: var(--p1);
+  /* Highlights with theme accent color */
+  color     : #000;
   box-shadow: inset 2px 2px 0 rgba(0, 0, 0, 0.4);
-  transform: translate(1px, 1px);
+  transform : translate(1px, 1px);
 }
 
 /* Stop Button State */
 #toggle-bug-game.btn-stop {
   background: #ff0055 !important;
-  color: #ffffff !important;
+  color     : #ffffff !important;
 }
 
 .lives-display {
   font-family: monospace;
-  font-size: 1.1rem;
+  font-size  : 1.1rem;
 }
 
 .hole {
-  height: 90px;
+  height          : 90px;
   background-color: var(--surface-muted);
-  border: 3px solid var(--stroke);
-  box-shadow: 4px 4px 0 var(--shadow);
-  position: relative;
-  overflow: hidden;
-  border-radius: 8px;
-  cursor: pointer;
+  border          : 3px solid var(--stroke);
+  box-shadow      : 4px 4px 0 var(--shadow);
+  position        : relative;
+  overflow        : hidden;
+  border-radius   : 8px;
+  cursor          : pointer;
 }
 
 .target {
-  font-size: 2.5rem;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
+  font-size      : 2.5rem;
+  position       : absolute;
+  width          : 100%;
+  height         : 100%;
+  display        : flex;
+  align-items    : center;
   justify-content: center;
-  top: 100%; /* Hidden off-screen by default */
-  transition: top 0.15s ease-in-out;
-  user-select: none;
+  top            : 100%;
+  /* Hidden off-screen by default */
+  transition     : top 0.15s ease-in-out;
+  user-select    : none;
 }
 
 .hole.up .target {
-  top: 0; /* Pops up */
+  top: 0;
+  /* Pops up */
 }
 
 /* Red Flash Effect when hitting a bomb */
 .hole.bomb-hit {
   background-color: #ff0055 !important;
-  transition: background-color 0.1s ease;
+  transition      : background-color 0.1s ease;
 }
 
 /*Game bug style ended*/
+
+/* ==================== SOC CRISIS SIMULATOR 2.0 ==================== */
+.soc-card {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #0b0c10;
+  border: 3px solid var(--stroke, #00f0ff);
+  box-shadow: 6px 6px 0 var(--shadow, #000);
+  position: relative;
+}
+
+.soc-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: monospace;
+  font-weight: bold;
+  padding-bottom: 12px;
+  border-bottom: 2px dashed var(--stroke, #00f0ff);
+  margin-bottom: 15px;
+  color: #fff;
+}
+
+.status-indicator {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #00ff66;
+  margin-right: 8px;
+  box-shadow: 0 0 8px #00ff66;
+}
+
+.status-indicator.alert {
+  background-color: #ff0055;
+  box-shadow: 0 0 10px #ff0055;
+  animation: blink 0.6s infinite alternate;
+}
+
+@keyframes blink {
+  from { opacity: 1; }
+  to { opacity: 0.2; }
+}
+
+/* CRT Display Screen */
+.soc-monitor {
+  position: relative;
+  background: #050608;
+  border: 2px solid var(--stroke, #00f0ff);
+  border-radius: 6px;
+  height: 230px;
+  overflow: hidden;
+  margin-bottom: 15px;
+}
+
+.soc-terminal {
+  height: 100%;
+  padding: 15px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.88rem;
+  color: #00ff66;
+  overflow-y: auto;
+  line-height: 1.4;
+}
+
+.soc-terminal p {
+  margin: 0 0 6px 0;
+}
+
+.sys-warn { color: #ffcc00; }
+.sys-err { color: #ff0055; font-weight: bold; }
+.sys-success { color: #00ff66; font-weight: bold; }
+
+/* CRT Scanline & Screen Glitch Effects */
+.crt-overlay {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%);
+  background-size: 100% 4px;
+  pointer-events: none;
+}
+
+/* Glitch Trigger States */
+.soc-card.glitching {
+  animation: crtGlitch 0.2s infinite;
+  border-color: #ff0055 !important;
+}
+
+.soc-card.system-dead {
+  filter: grayscale(80%) contrast(150%);
+  animation: screenStuck 0.15s infinite;
+  pointer-events: none;
+}
+
+@keyframes crtGlitch {
+  0% { transform: translate(0, 0); filter: hue-rotate(0deg); }
+  20% { transform: translate(-3px, 2px); filter: hue-rotate(90deg); }
+  40% { transform: translate(3px, -1px); filter: hue-rotate(180deg); }
+  60% { transform: translate(-2px, -2px); }
+  80% { transform: translate(2px, 1px); }
+  100% { transform: translate(0, 0); }
+}
+
+@keyframes screenStuck {
+  0% { opacity: 0.9; transform: skewX(0deg); }
+  50% { opacity: 0.4; transform: skewX(2deg) scaleY(0.99); }
+  100% { opacity: 1; transform: skewX(-1deg); }
+}
+
+/* Subsystem Controls */
+.soc-subsystem {
+  background: #12131c;
+  border: 1px solid #2a2d3d;
+  padding: 12px;
+  border-radius: 4px;
+  margin-bottom: 15px;
+  min-height: 80px;
+}
+
+.soc-interactive-input {
+  width: 100%;
+  background: #000;
+  border: 1px solid var(--stroke, #00f0ff);
+  color: #00ff66;
+  padding: 8px 12px;
+  font-family: monospace;
+}
+
+.port-grid {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.port-btn {
+  background: #1a1b26;
+  color: #fff;
+  border: 1px solid #00f0ff;
+  padding: 6px 12px;
+  cursor: pointer;
+  font-family: monospace;
+}
+
+.port-btn.blocked {
+  background: #ff0055;
+  color: #000;
+  border-color: #ff0055;
+}
+
+.soc-controls {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.soc-opt-btn {
+  flex: 1 1 45%;
+  background: #1a1b26;
+  color: #fff;
+  border: 2px solid var(--stroke, #00f0ff);
+  padding: 10px;
+  font-family: monospace;
+  font-weight: bold;
+  text-align: left;
+  cursor: pointer;
+  box-shadow: 3px 3px 0 #000;
+}
+
+.soc-opt-btn:hover {
+  background: #00f0ff;
+  color: #000;
+}
+
+/*soc end*/
 
 .hc-badge {
   position   : absolute;
@@ -623,6 +816,46 @@ footer,
 .skill-badge i {
   color    : black;
   font-size: 22px;
+}
+
+/* ==================== SKILL PROGRESS BARS ==================== */
+.skill-level {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  margin-top: 10px;
+}
+
+/* Background Track */
+.progress-track {
+  flex: 1;
+  height: 12px;
+  background-color: var(--surface-muted, #222436);
+  border: 2px solid var(--stroke, #00f0ff);
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: inset 1px 1px 0 var(--shadow, #000);
+}
+
+/* Vibrant Gradient Bar */
+.progress-fill {
+  height: 100%;
+  width: 0%; /* JS will animate this */
+  background: linear-gradient(90deg, #ff0055 0%, #00f0ff 50%, #00ff66 100%) !important;
+  border-right: 2px solid var(--stroke, #00f0ff);
+  transition: width 1s ease-in-out;
+}
+
+/* Percentage Text Label */
+.progress-percent {
+  font-family: monospace;
+  font-weight: bold;
+  font-size: 0.85rem;
+  color: var(--ink, #ffffff);
+  min-width: 38px;
+  text-align: right;
 }
 
 .projects,

