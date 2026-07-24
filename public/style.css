@@ -855,6 +855,75 @@ footer,
   text-align: right;
 }
 
+/* Styling for cards with certificates */
+.skill-card.has-cert {
+  cursor: pointer;
+  position: relative;
+}
+
+.skill-card.has-cert:hover {
+  border-color: #00f0ff;
+}
+
+.cert-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: #00f0ff;
+  font-size: 0.85rem;
+}
+
+/* Modal Popup Styles */
+.cert-modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(4px);
+  justify-content: center;
+  align-items: center;
+}
+
+#cert-modal-title{
+  color: var(--avatar-glow);
+}
+
+.cert-modal-content {
+  background: var(--text-muted);
+  border: 3px solid var(--stroke, #00f0ff);
+  box-shadow: 8px 8px 0 #000;
+  padding: 20px;
+  width: 90%;
+  max-width: 700px;
+  position: relative;
+  border-radius: 6px;
+}
+
+.cert-close-btn {
+  position: absolute;
+  top: 10px; right: 15px;
+  font-size: 1.8rem;
+  background: none;
+  border: none;
+  color: var(--avatar-glow);
+  cursor: pointer;
+}
+
+#cert-viewer {
+  width: 100%;
+  height: 400px;
+  border: 2px solid var(--p4);
+  margin: 15px 0;
+  background: var(--surface-muted);
+}
+
+.cert-modal-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .projects,
 .project-grid,
 .links-grid {
@@ -927,6 +996,9 @@ footer,
 
 .c3 {
   background-color: var(--p5) !important;
+}
+.c4 {
+  background-color: var(--p4) !important;
 }
 
 .info-wrap {

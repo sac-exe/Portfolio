@@ -658,6 +658,38 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+//popup certificate
+function openCertModal(card) {
+  const certUrl = card.getAttribute('data-cert');
+  const skillTitle = card.querySelector('.skill-title').innerText.trim();
+
+  if (!certUrl) return;
+
+  document.getElementById('cert-modal-title').innerText = `${skillTitle} Certificate`;
+  document.getElementById('cert-viewer').src = certUrl;
+  
+  const downloadBtn = document.getElementById('cert-download-btn');
+  downloadBtn.href = certUrl;
+  
+  // Explicitly set filename and extension for download
+  downloadBtn.setAttribute('download', `${skillTitle}-Certificate.pdf`);
+  
+  document.getElementById('cert-modal').style.display = 'flex';
+}
+
+function closeCertModal() {
+  document.getElementById('cert-modal').style.display = 'none';
+  document.getElementById('cert-viewer').src = ''; // Stop loading content
+}
+
+// Close modal when clicking outside content area
+window.addEventListener('click', (e) => {
+  const modal = document.getElementById('cert-modal');
+  if (e.target === modal) {
+    closeCertModal();
+  }
+});
+
 //soc start
 
 const socCard = document.getElementById('soc-card');

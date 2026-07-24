@@ -64,7 +64,7 @@
         </div>
         <div class="cta-row">
           <a class="button primary sfx-click sfx-hover" href="/#work">View projects</a>
-          <a class="button outline sfx-click sfx-hover" href="mailto:sj7717620@gmail.com">Get in touch</a>
+          <a class="button outline sfx-click sfx-hover" href="mailto:sachinjrwork@gmail.com">Get in touch</a>
         </div>
 
         <div class="bio-card card sfx-hover" aria-label="Quick Bio">
@@ -112,19 +112,19 @@
       </span> -->
       <div class="skills-grid">
        
-        <div class="skill-card sfx-hover">
+        <div class="skill-card sfx-hover " data-cert="/assets/certs/htmlcss-certificate.pdf" onclick="openCertModal(this)">
           <span class="skill-badge" style="--c: var(--p1)"><i class="fa-brands fa-html5" aria-hidden="true"></i></span>
           <div class="skill-title">HTML5</div>
-          <div class="skill-level" data-progress="95%">
+          <div class="skill-level" data-progress="100%">
             <div class="progress-track"><div class="progress-fill"></div></div>
             <span class="progress-percent">0%</span>
           </div>
         </div>
 
-        <div class="skill-card sfx-hover">
+        <div class="skill-card sfx-hover" data-cert="/assets/certs/htmlcss-certificate.pdf" onclick="openCertModal(this)">
           <span class="skill-badge" style="--c: var(--p3)"><i class="fa-brands fa-css3-alt" aria-hidden="true"></i></span>
           <div class="skill-title">CSS3</div>
-          <div class="skill-level" data-progress="95%">
+          <div class="skill-level" data-progress="100%">
             <div class="progress-track"><div class="progress-fill"></div></div>
             <span class="progress-percent">0%</span>
           </div>
@@ -149,6 +149,15 @@
         </div>
 
         <div class="skill-card sfx-hover">
+          <span class="skill-badge" style="--c: var(--p6)"><i class="fa-brands fa-react" aria-hidden="true"></i></span>
+          <div class="skill-title">React</div>
+          <div class="skill-level" data-progress="20%">
+            <div class="progress-track"><div class="progress-fill"></div></div>
+            <span class="progress-percent">0%</span>
+          </div>
+        </div>
+
+        <div class="skill-card sfx-hover">
           <span class="skill-badge" style="--c: var(--p5)"><i class="fa-solid fa-database" aria-hidden="true"></i></span>
           <div class="skill-title">MongoDB</div>
           <div class="skill-level" data-progress="50%">
@@ -166,10 +175,10 @@
           </div>
         </div>
 
-        <div class="skill-card sfx-hover">
-          <span class="skill-badge" style="--c: var(--p6)"><i class="fa-brands fa-react" aria-hidden="true"></i></span>
-          <div class="skill-title">React</div>
-          <div class="skill-level" data-progress="60%">
+        <div class="skill-card sfx-hover" data-cert="/assets/certs/bootstrap-certificate.pdf" onclick="openCertModal(this)">
+          <span class="skill-badge" style="--c: var(--p5)"><i class="fa-brands fa-bootstrap fa-canvas-roomy"></i></span>
+          <div class="skill-title">Bootstrap</div>
+          <div class="skill-level" data-progress="100%">
             <div class="progress-track"><div class="progress-fill"></div></div>
             <span class="progress-percent">0%</span>
           </div>
@@ -201,7 +210,30 @@
             <span class="progress-percent">0%</span>
           </div>
         </div>
+        <div class="skill-card sfx-hover" data-cert="/assets/certs/sql-certificate.pdf" onclick="openCertModal(this)">
+          <span class="skill-badge" style="--c: var(--p6)"><i class="fa-solid fa-database"></i></span>
+          <div class="skill-title">SQL</div>
+          <div class="skill-level" data-progress="100%">
+            <div class="progress-track"><div class="progress-fill"></div></div>
+            <span class="progress-percent">0%</span>
+          </div>
+        </div>
       </div>
+
+      <!-- Global Certificate Modal -->
+      <div id="cert-modal" class="cert-modal">
+        <div class="cert-modal-content">
+          <button class="cert-close-btn" onclick="closeCertModal()">&times;</button>
+          <h3 id="cert-modal-title">Certificate</h3>
+          
+          <!-- Certificate Preview Frame/Image -->
+          <iframe id="cert-viewer" src="" frameborder="0"></iframe>
+
+          <!-- Download & Action Controls -->
+          <div class="cert-modal-actions">
+            <a id="cert-download-btn" href="" download class="button btn-sm">Download Certificate 📥</a>
+          </div>
+        </div>
     </section>
 
     <section class="game-section my-5">
@@ -212,10 +244,10 @@
           <span class="dot red"></span>
           <span class="dot yellow"></span>
           <span class="dot green"></span>
-          <span class="terminal-title">root@sachin-sec:~#</span>
-        </div>
-        <div class="terminal-body" id="terminal-output">
-          <p>Type <span class="highlight">'help'</span> to view available commands or find the hidden flag!</p>
+          <div class="terminal-body" id="terminal-output">
+            <p>Type <span class="highlight">'help'</span> to view available commands or find the hidden flag!</p>
+          </div>
+          <span class="terminal-title">root@sachin-sac:~#</span>
         </div>
         <div class="terminal-input-line">
           <span class="prompt">></span>
@@ -340,6 +372,7 @@
           <a class="button primary sfx-click sfx-hover" href="mailto:sachinjrwork@gmail.com"><i class="fa-regular fa-envelope"></i> Email</a>
           <a class="button outline c1 sfx-click sfx-hover" href="https://github.com/sac-exe" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i>GitHub</a>
           <a class="button outline c2 sfx-click sfx-hover" href="https://www.linkedin.com/in/sachin-sac/" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin"></i>LinkedIn</a>
+          <a class="button outline c4 sfx-click sfx-hover" href="https://tryhackme.com/p/sac007" target="_blank" rel="noopener"><i class="fa-solid fa-square-binary"></i></i>TryHackMe</a>
           <a class="button outline c3 sfx-click sfx-hover" href="https://www.instagram.com/s_c.exe?igsh=b3gyY3RqODR3b2cz" target="_blank" rel="noopener"><i class="fa-brands fa-instagram"></i>Instagram</a>
         </div>
       </div>
