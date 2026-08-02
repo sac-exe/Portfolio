@@ -59,7 +59,7 @@
   --stroke      : #ffdd00;
   /* Sharp electric cyan outline */
   --stroke-color: var(--stroke);
-  --shadow      : #000000;
+  --shadow      : #ffdd00;
   /* Solid deep black shadow for maximum 3D lift */
   --shadow-color: var(--shadow);
 
@@ -291,7 +291,7 @@ footer,
   justify-content: center;
   align-items: center;
   overflow: hidden; 
-  border-radius: 50%;
+  border-radius: 15rem;
   border: 3px solid var(--stroke, #00f0ff);
   box-shadow: 5px 5px 0 var(--shadow, #000);
   background-color: var(--surface-muted, #1a1b26);
