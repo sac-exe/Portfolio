@@ -285,14 +285,13 @@ footer,
 
 .avatar-wrap {
   width: 100%;
-  max-width: 320px; /* Adjust max-width to fit your layout size */
-  height: auto; /* Lets height adapt naturally to aspect ratio */
+  max-width: 320px; 
+  height: auto; 
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden; /* Keeps borders/shadows clean */
-  
-  /* If you have neubrutalist card borders/shadows on wrapper */
+  overflow: hidden; 
+  border-radius: 50%;
   border: 3px solid var(--stroke, #00f0ff);
   box-shadow: 5px 5px 0 var(--shadow, #000);
   background-color: var(--surface-muted, #1a1b26);
