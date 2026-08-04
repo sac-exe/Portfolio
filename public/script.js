@@ -255,52 +255,53 @@ const SFX = (() => {
   });
 })();
 
-// (() => { //info-card
-//   const icon = document.getElementById('infoskill');
-//   const card = document.getElementById('infoskill-card');
-//   if (!icon || !card) return;
 
-//   let hideTimeout = 0;
-//   const isCoarse = matchMedia && matchMedia('(pointer: coarse)').matches;
+(() => { //info-card
+  const icon = document.getElementById('infoskill');
+  const card = document.getElementById('infoskill-card');
+  if (!icon || !card) return;
 
-//   function show() {
-//     window.clearTimeout(hideTimeout);
-//     card.classList.add('visible');
-//     card.setAttribute('aria-hidden', 'false');
-//   }
-//   function hide() {
-//     window.clearTimeout(hideTimeout);
-//     card.classList.remove('visible');
-//     card.setAttribute('aria-hidden', 'true');
-//   }
-//   function delayedHide() {
-//     hideTimeout = window.setTimeout(hide, 200);
-//   }
+  let hideTimeout = 0;
+  const isCoarse = matchMedia && matchMedia('(pointer: coarse)').matches;
 
-//   // Pointer devices: hover
-//   icon.addEventListener('mouseenter', () => { if (!isCoarse) show(); });
-//   icon.addEventListener('mouseleave', () => { if (!isCoarse) delayedHide(); });
-//   card.addEventListener('mouseenter', () => { if (!isCoarse) show(); });
-//   card.addEventListener('mouseleave', () => { if (!isCoarse) delayedHide(); });
+  function show() {
+    window.clearTimeout(hideTimeout);
+    card.classList.add('visible');
+    card.setAttribute('aria-hidden', 'false');
+  }
+  function hide() {
+    window.clearTimeout(hideTimeout);
+    card.classList.remove('visible');
+    card.setAttribute('aria-hidden', 'true');
+  }
+  function delayedHide() {
+    hideTimeout = window.setTimeout(hide, 200);
+  }
 
-//   // Click toggles (useful for touch)
-//   icon.addEventListener('click', e => { e.stopPropagation(); card.classList.toggle('visible'); card.setAttribute('aria-hidden', card.classList.contains('visible') ? 'false' : 'true'); });
-//   card.querySelector('.info-card-close')?.addEventListener('click', () => hide());
+  // Pointer devices: hover
+  icon.addEventListener('mouseenter', () => { if (!isCoarse) show(); });
+  icon.addEventListener('mouseleave', () => { if (!isCoarse) delayedHide(); });
+  card.addEventListener('mouseenter', () => { if (!isCoarse) show(); });
+  card.addEventListener('mouseleave', () => { if (!isCoarse) delayedHide(); });
 
-//   // Keyboard
-//   icon.addEventListener('keydown', e => {
-//     if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); card.classList.toggle('visible'); card.setAttribute('aria-hidden', card.classList.contains('visible') ? 'false' : 'true'); }
-//     if (e.key === 'Escape') hide();
-//   });
+  // Click toggles (useful for touch)
+  icon.addEventListener('click', e => { e.stopPropagation(); card.classList.toggle('visible'); card.setAttribute('aria-hidden', card.classList.contains('visible') ? 'false' : 'true'); });
+  card.querySelector('.info-card-close')?.addEventListener('click', () => hide());
 
-//   // Close when clicking/tapping outside
-//   document.addEventListener('click', (e) => {
-//     if (!icon.contains(e.target) && !card.contains(e.target)) hide();
-//   });
+  // Keyboard
+  icon.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); card.classList.toggle('visible'); card.setAttribute('aria-hidden', card.classList.contains('visible') ? 'false' : 'true'); }
+    if (e.key === 'Escape') hide();
+  });
 
-//   // ESC globally
-//   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') hide(); });
-// })();
+  // Close when clicking/tapping outside
+  document.addEventListener('click', (e) => {
+    if (!icon.contains(e.target) && !card.contains(e.target)) hide();
+  });
+
+  // ESC globally
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') hide(); });
+})();
 
 //custom loader animation for nav-link scroll
 document.querySelectorAll('.nav-link[href^="/#"]').forEach(link => {
