@@ -409,13 +409,27 @@ input.addEventListener('keydown', (e) => {
       document.body.removeChild(link);
       response = `Downloading resume... If the download doesn't start automatically, <a href="${SOCIAL_LINKS.resume}" download style="color:var(--p2);">click here</a>.`;
     } 
+
+    // 4. Take visitors directly to the portfolio contact form
+    else if (cmd === 'message') {
+      const contactSection = document.getElementById('contact');
+      const nameField = document.querySelector('#contact-form input[name="name"]');
+
+      if (contactSection) {
+        contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        setTimeout(() => nameField?.focus({ preventScroll: true }), 600);
+        response = 'Opening the contact form...';
+      } else {
+        response = 'Contact form is currently unavailable.';
+      }
+    }
     
-    // 4. Handle Text Commands (help, whoami, skills, etc.)
+    // 5. Handle Text Commands (help, whoami, skills, etc.)
     else if (commands[cmd]) {
       response = commands[cmd];
     } 
     
-    // 5. Handle Unknown Commands
+    // 6. Handle Unknown Commands
     else {
       response = `Command not found: <b>${rawCmd}</b>. Type <b>'help'</b> to see available options.`;
     }
