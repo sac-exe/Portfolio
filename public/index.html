@@ -88,7 +88,7 @@
 
       <div class="hero-right" data-aos="fade-down-left">
         <div class="hero-card pop sfx-hover">
-          <div class="hc-badge">2025</div>
+          <div class="hc-badge">2026</div>
           <div class="hc-title">Selected Highlights</div>
           <ul class="hc-list">
             <li>Motion tokens & micro‑interactions</li>
@@ -238,7 +238,7 @@
     </section>
 
     <section class="game-section my-5">
-      <h2 class="section-title">Terminal Challenge <span>[CTF]</span></h2>
+      <h2 class="section-title">Terminal</h2>
       
       <div class="terminal-card card">
         <div class="terminal-header">
@@ -246,12 +246,12 @@
           <span class="dot yellow"></span>
           <span class="dot green"></span>
           <div class="terminal-body" id="terminal-output">
-            <p>Type <span class="highlight">'help'</span> to view available commands or find the hidden flag!</p>
+            <p>Type <span class="highlight">'help'</span> to view available commands or find the hidden flag</p>
           </div>
           <span class="terminal-title">root@sachin-sac:~#</span>
         </div>
         <div class="terminal-input-line">
-          <span class="prompt">></span>
+          <span class="prompt">⚡</span>
           <input type="text" id="terminal-input" placeholder="Enter command..." autofocus />
         </div>
       </div>
@@ -295,7 +295,7 @@
     </section>
 
     <section class="soc-section my-5">
-      <h2 class="section-title">SOC Crisis Simulator <span>[Live Incident Console]</span></h2>
+      <h2 class="section-title">SOC Crisis Simulator</h2>
 
       <div class="soc-card card" id="soc-card">
         <!-- Header Metrics Bar -->
@@ -331,51 +331,142 @@
       </div>
     </section>
 <br/>
-    <section class="bug-game-section my-5">
-      <h2 class="section-title">Bug Hunter <span>[Minigame]</span></h2>
-      
-      <div class="game-container card">
-        <!-- Difficulty Selector -->
-        <div class="difficulty-selector mb-3">
-          <span class="diff-label">Mode:</span>
-          <button class="btn-diff active" data-speed-min="800" data-speed-max="1200">Easy</button>
-          <button class="btn-diff" data-speed-min="500" data-speed-max="800">Intermediate</button>
-          <button class="btn-diff" data-speed-min="250" data-speed-max="450">Hard</button>
-        </div>
-
-        <!-- Stats Display (Hearts & Score) -->
-        <div class="game-stats">
-          <span>Score: <b id="bug-score">0</b></span>
-          <span class="lives-display">Lives: <span id="bug-lives">❤️ ❤️ ❤️</span></span>
-          <button id="toggle-bug-game" class="button btn-sm">Start Game</button>
-        </div>
-
-        <!-- Bug & Bomb Grid -->
-        <div class="bug-grid">
-          <div class="hole" data-id="1"><div class="target">🐛</div></div>
-          <div class="hole" data-id="2"><div class="target">🐛</div></div>
-          <div class="hole" data-id="3"><div class="target">🐛</div></div>
-          <div class="hole" data-id="4"><div class="target">🐛</div></div>
-          <div class="hole" data-id="5"><div class="target">🐛</div></div>
-          <div class="hole" data-id="6"><div class="target">🐛</div></div>
-        </div>
-      </div>
-    </section>
 
     <section class="section contact" id="contact">
       <h2 class="section-title">Contact</h2>
-      <div class="card contact-card">
-        <div class="contact-meta">
-          <div class="status-dot" aria-hidden="true"></div>
-          <span>Open to freelance and internships</span>
+
+      <div class="contact-grid">
+
+        <!-- Contact Form -->
+        <div class="card contact-form-card">
+          <form
+            id="contact-form"
+            action="https://api.web3forms.com/submit"
+            method="POST"
+          >
+
+            <!-- Web3Forms configuration -->
+            <input
+              type="hidden"
+              name="access_key"
+              value="0dd4018f-4386-4e06-9381-29746074a927"
+            >
+
+            <input
+              type="hidden"
+              name="subject"
+              value="New Portfolio Contact Message"
+            >
+
+            <!-- Spam protection -->
+            <input
+              type="checkbox"
+              name="botcheck"
+              style="display: none;"
+            >
+
+            <div class="input-row">
+
+              <input
+                type="text"
+                name="name"
+                placeholder="Your Name"
+                autocomplete="name"
+                required
+              >
+
+              <input
+                type="email"
+                name="email"
+                placeholder="Your Email"
+                autocomplete="email"
+                required
+              >
+
+            </div>
+
+            <input
+              type="text"
+              name="message_subject"
+              placeholder="Subject"
+              required
+            >
+
+            <textarea
+              name="message"
+              rows="7"
+              placeholder="Tell me about your project..."
+              required
+            ></textarea>
+
+            <button type="submit" class="send-btn">
+              Send Message
+              <i class="fa-solid fa-paper-plane"></i>
+            </button>
+
+          </form>
         </div>
-        <div class="contact-actions">
-          <a class="button primary sfx-click sfx-hover" href="mailto:sachinjrwork@gmail.com"><i class="fa-regular fa-envelope"></i> Email</a>
-          <a class="button outline c1 sfx-click sfx-hover" href="https://github.com/sac-exe" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i>GitHub</a>
-          <a class="button outline c2 sfx-click sfx-hover" href="https://www.linkedin.com/in/sachin-sac/" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin"></i>LinkedIn</a>
-          <a class="button outline c4 sfx-click sfx-hover" href="https://tryhackme.com/p/sac007" target="_blank" rel="noopener"><i class="fa-solid fa-square-binary"></i></i>TryHackMe</a>
-          <a class="button outline c3 sfx-click sfx-hover" href="https://www.instagram.com/s_c.exe?igsh=b3gyY3RqODR3b2cz" target="_blank" rel="noopener"><i class="fa-brands fa-instagram"></i>Instagram</a>
+
+        <!-- Existing Contact Links -->
+        <div class="card contact-card">
+          <div class="contact-meta">
+            <div class="status-dot" aria-hidden="true"></div>
+            <span>Open to freelance and internships</span>
+          </div>
+
+          <div class="contact-actions">
+
+            <a
+              class="button primary sfx-click sfx-hover"
+              href="mailto:sachinjrwork@gmail.com"
+            >
+              <i class="fa-regular fa-envelope"></i>
+              Email
+            </a>
+
+            <a
+              class="button outline c1 sfx-click sfx-hover"
+              href="https://github.com/sac-exe"
+              target="_blank"
+              rel="noopener"
+            >
+              <i class="fa-brands fa-github"></i>
+              GitHub
+            </a>
+
+            <a
+              class="button outline c2 sfx-click sfx-hover"
+              href="https://www.linkedin.com/in/sachin-sac/"
+              target="_blank"
+              rel="noopener"
+            >
+              <i class="fa-brands fa-linkedin"></i>
+              LinkedIn
+            </a>
+
+            <a
+              class="button outline c4 sfx-click sfx-hover"
+              href="https://tryhackme.com/p/sac007"
+              target="_blank"
+              rel="noopener"
+            >
+              <i class="fa-solid fa-square-binary"></i>
+              TryHackMe
+            </a>
+
+            <a
+              class="button outline c3 sfx-click sfx-hover"
+              href="https://www.instagram.com/s_c.exe?igsh=b3gyY3RqODR3b2cz"
+              target="_blank"
+              rel="noopener"
+            >
+              <i class="fa-brands fa-instagram"></i>
+              Instagram
+            </a>
+
+          </div>
         </div>
+
       </div>
     </section>
   </main>
