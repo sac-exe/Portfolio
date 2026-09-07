@@ -970,6 +970,109 @@ footer,
   justify-content: space-between;
 }
 
+/* Contact form — keeps the portfolio's hard-outline card language. */
+.contact-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 760px);
+  justify-content: center;
+}
+
+.contact-form-card {
+  padding: clamp(18px, 3vw, 28px);
+}
+
+#contact-form {
+  display: grid;
+  gap: 14px;
+}
+
+#contact-form .input-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+#contact-form input:not([type="hidden"]):not([type="checkbox"]),
+#contact-form textarea {
+  width: 100%;
+  color: var(--text-main);
+  background: var(--surface-muted);
+  border: 3px solid var(--stroke-color);
+  border-radius: 0;
+  outline: none;
+  box-shadow: 4px 4px 0 var(--shadow-color);
+  font: inherit;
+  line-height: 1.35;
+  transition: transform .12s, box-shadow .12s, background .12s;
+}
+
+#contact-form input:not([type="hidden"]):not([type="checkbox"]) {
+  min-height: 48px;
+  padding: 10px 12px;
+}
+
+#contact-form textarea {
+  min-height: 150px;
+  padding: 12px;
+  resize: vertical;
+}
+
+#contact-form input::placeholder,
+#contact-form textarea::placeholder {
+  color: var(--text-muted);
+  opacity: 1;
+}
+
+#contact-form input:not([type="hidden"]):not([type="checkbox"]):focus,
+#contact-form textarea:focus {
+  background: var(--card-bg);
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--p1);
+}
+
+#contact-form .send-btn {
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 10px 18px;
+  color: #111;
+  background: var(--p1);
+  border: 3px solid var(--stroke-color);
+  border-radius: 0;
+  box-shadow: 5px 5px 0 var(--shadow-color);
+  font: 700 var(--step-0) 'Space Grotesk', sans-serif;
+  cursor: pointer;
+  transition: transform .12s, box-shadow .12s;
+}
+
+#contact-form .send-btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 7px 7px 0 var(--shadow-color);
+}
+
+#contact-form .send-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 var(--shadow-color);
+}
+
+#contact-form .send-btn:focus-visible {
+  outline: 3px solid var(--p3);
+  outline-offset: 3px;
+}
+
+@media (max-width: 560px) {
+  #contact-form .input-row {
+    grid-template-columns: 1fr;
+  }
+
+  #contact-form .send-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
 .contact-meta {
   display    : flex;
   gap        : 8px;
