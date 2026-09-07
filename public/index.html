@@ -140,10 +140,10 @@
           </div>
         </div>
 
-        <div class="skill-card sfx-hover">
+        <div class="skill-card sfx-hover" data-cert="/assets/certs/nodeJs-certificate.pdf" onclick="openCertModal(this)">
           <span class="skill-badge" style="--c: var(--p2)"><i class="fa-brands fa-node-js" aria-hidden="true"></i></span>
           <div class="skill-title">Node.js</div>
-          <div class="skill-level" data-progress="50%">
+          <div class="skill-level" data-progress="100%">
             <div class="progress-track"><div class="progress-fill"></div></div>
             <span class="progress-percent">0%</span>
           </div>
@@ -341,10 +341,9 @@
         <div class="card contact-form-card">
           <form
             id="contact-form"
-            
+            action="https://api.web3forms.com/submit"
+            method="POST"
           >
-
-          <!-- action="https://api.web3forms.com/submit" method="POST" -->
 
             <!-- Web3Forms configuration -->
             <input
