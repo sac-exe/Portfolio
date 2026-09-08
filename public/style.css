@@ -217,6 +217,41 @@ footer,
   padding   : 0;
 }
 
+.scroll-top {
+  position        : fixed;
+  right           : clamp(16px, 3vw, 28px);
+  bottom          : clamp(16px, 3vw, 28px);
+  z-index         : 30;
+  display         : grid;
+  width           : 46px;
+  height          : 46px;
+  place-items     : center;
+  color           : var(--text-main);
+  background      : var(--p1);
+  border          : 3px solid var(--stroke-color);
+  box-shadow      : 5px 5px 0 var(--shadow-color);
+  cursor          : pointer;
+  opacity         : 0;
+  pointer-events  : none;
+  transform       : translateY(12px);
+  transition      : opacity .18s, transform .18s, background-color .2s;
+}
+
+.scroll-top.is-visible {
+  opacity        : 1;
+  pointer-events : auto;
+  transform      : translateY(0);
+}
+
+.scroll-top:hover {
+  transform: translate(-3px, -3px);
+}
+
+.scroll-top:focus-visible {
+  outline       : 3px solid var(--p3);
+  outline-offset: 3px;
+}
+
 .nav-link:hover,
 .button:hover,
 .theme-toggle:hover,

@@ -34,6 +34,29 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
+// Show a quick return control once the visitor has moved down the page.
+document.addEventListener('DOMContentLoaded', () => {
+  const scrollTopButton = document.querySelector('.scroll-top');
+  if (!scrollTopButton) return;
+
+  const updateScrollTopButton = () => {
+    const isVisible = window.scrollY > 300;
+    scrollTopButton.classList.toggle('is-visible', isVisible);
+    scrollTopButton.setAttribute('aria-hidden', String(!isVisible));
+    scrollTopButton.tabIndex = isVisible ? 0 : -1;
+  };
+
+  scrollTopButton.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'
+    });
+  });
+
+  window.addEventListener('scroll', updateScrollTopButton, { passive: true });
+  updateScrollTopButton();
+});
+
 //animation.js
 (() => {
   if (!window.gsap) return;
