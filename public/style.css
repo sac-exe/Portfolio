@@ -244,9 +244,7 @@ main {
 .avatar {
   width: 100%;
   height: 100%;
-  object-fit: cover;            /* Fills the circle without stretching */
-  object-position: center 20%;  /* Shifts framing up so your face/head isn't cut off */
-  transform: scale(0.92);       /* Zooms out slightly (lower = more zoomed out, e.g. 0.85) */
+  object-fit: cover;
 }
 
 .id-meta h1 {
