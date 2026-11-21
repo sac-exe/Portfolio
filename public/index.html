@@ -1,10 +1,11 @@
 <!doctype html>
-<html lang="en" data-barba="wrapper" data-theme="light">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Sachin — Pentester | Portfolio</title>
-  <meta name="theme-color" content="#fafafa" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sachin.J | Penetration Tester &amp; Offensive Security</title>
+  <meta name="description" content="Portfolio of Sachin.J — BCA Graduate, Penetration Tester, and CTF Challenge Developer based in Kerala, India." />
+  <meta name="theme-color" content="#0b0c10" />
   <script>
     (() => {
       const savedTheme = localStorage.getItem('portfolio-theme');
@@ -12,483 +13,425 @@
       document.documentElement.dataset.theme = theme;
     })();
   </script>
-  <link rel="icon" href="/assets/tab_icon/SAC.png" type="image/png" sizes="32x32">
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+  <link rel="icon" href="/assets/tab_icon/SAC.png" type="image/png" sizes="32x32" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="stylesheet" href="style.css" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
-  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/@barba/core@2.9.7/dist/barba.umd.min.js"></script>
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script defer src="script.js"></script>
 </head>
-<body class="theme-brutal sfx-click" >
-  <div class="loader" aria-hidden="true">
-    <div class="loader-block lb1"></div>
-    <div class="loader-block lb2"></div>
-    <div class="loader-block lb3"></div>
-    <div class="loader-mark">SAC</div>
-  </div>
-
-  <main data-barba="container" data-barba-namespace="home">
-    <header class="nav fixed-top">
-      <a class="brand sfx-click" href="/">Sachin.J <span aria-hidden="true">*</span> Portfolio</a>
-      <nav class="nav-links ">
-        <a class="nav-link sfx-hover sfx-click" href="/#skills"><i class="fa-solid fa-computer"></i>Skills</a>
-        <a class="nav-link sfx-hover sfx-click" href="/#about"><i class="fa-regular fa-address-card"></i>About</a>
-        <a class="nav-link sfx-hover sfx-click" href="/#contact"><i class="fa-regular fa-user"></i>Contact</a>
-        <a class="nav-link sfx-hover sfx-click" href="/assets/doc/Sachin_Resume.pdf" target="_blank" rel="noopener"><i class="fa-regular fa-file"></i>Resume</a>
-        <button class="theme-toggle sfx-click" type="button" aria-label="Switch to dark theme" aria-pressed="false">
-          <i class="fa-solid fa-moon" aria-hidden="true"></i>
+<body>
+  <header class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="#top">Sachin.J <span class="brand-accent">//</span> SAC</a>
+      <nav class="nav-links" aria-label="Primary Navigation">
+        <a class="nav-link" href="#work">Projects</a>
+        <a class="nav-link" href="#skills">Skills</a>
+        <a class="nav-link" href="#labs">Interactive Labs</a>
+        <a class="nav-link" href="#about">About</a>
+        <a class="nav-link" href="#contact">Contact</a>
+        <a class="nav-link nav-resume" href="/assets/doc/Sachin_Resume.pdf" target="_blank" rel="noopener">
+          <i class="fa-regular fa-file-pdf" aria-hidden="true"></i> Resume
+        </a>
+        <button class="theme-toggle" type="button" aria-label="Switch theme" aria-pressed="true">
+          <i class="fa-solid fa-sun" aria-hidden="true"></i>
         </button>
       </nav>
-    </header>
+    </div>
+  </header>
 
+  <main id="top">
+    <!-- HERO SECTION -->
     <section class="hero">
       <div class="hero-left">
-        <div class="id-row" aria-label="Identity">
+        <div class="status-pill">
+          <span class="pulse-dot" aria-hidden="true"></span>
+          <span>Available for Entry-Level Pentesting &amp; Internships</span>
+        </div>
+
+        <div class="id-row">
           <div class="avatar-wrap">
-            <img class="avatar" src="/assets/img/SAC.png" alt="Portrait of Sachin" />
-            
+            <img class="avatar" src="/assets/img/SAC.png" alt="Portrait of Sachin.J" />
           </div>
           <div class="id-meta">
             <h1>
               <span class="highlight-name">Sachin.J</span>
-              <span class="split-lines">— Pentester</span>
+              <span class="role-title">Penetration Tester &amp; Red Teamer</span>
             </h1>
-            <p class="lead ">
-              Cybersecurity Student & Aspiring Offensive Security Engineer | Learning Penetration Testing & Red Teaming
+            <p class="lead">
+              BCA Graduate &amp; Offensive Security Practitioner focused on Web Application Security, Vulnerability Assessment, and CTF Engineering.
+            </p>
           </div>
         </div>
+
         <div class="cta-row">
-          <a class="button primary sfx-click sfx-hover" href="/#work">View projects</a>
-          <a class="button outline sfx-click sfx-hover" href="/#contact">Get in touch</a>
+          <a class="button primary" href="#work">View Projects <i class="fa-solid fa-arrow-down" aria-hidden="true"></i></a>
+          <a class="button outline" href="#labs">Try SOC Simulator <i class="fa-solid fa-terminal" aria-hidden="true"></i></a>
+          <a class="button outline" href="#contact">Get in Touch</a>
         </div>
 
-        <div class="bio-card card sfx-hover" aria-label="Quick Bio">
+        <div class="bio-card card" aria-label="Quick Profile">
           <div class="bio-grid">
             <div>
-              <div class="bio-label c1">Focus</div>
-              <div class="bio-value">Pentester | Redteamer</div>
+              <div class="bio-label c1">Specialization</div>
+              <div class="bio-value">Web Pentesting &amp; Red Teaming</div>
             </div>
             <div>
-              <div class="bio-label c3">Currently</div>
-              <div class="bio-value ">BCA Graduate,Studying at Offenso</div>
+              <div class="bio-label c3">Credentials</div>
+              <div class="bio-value">BCA Graduate · Offenso Academy</div>
             </div>
             <div>
-              <div class="bio-label ">Location</div>
-              <div class="bio-value">Kerala, India · IST</div>
+              <div class="bio-label c2">Location</div>
+              <div class="bio-value">Kerala, India (IST)</div>
+            </div>
+            <div>
+              <div class="bio-label c4">Core Toolkit</div>
+              <div class="bio-value">Burp Suite · Nmap · Linux · Python</div>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="hero-right" data-aos="fade-down-left">
-        <div class="hero-card pop sfx-hover">
-          <div class="hc-badge">2026</div>
-          <div class="hc-title">Selected Highlights</div>
+      <div class="hero-right">
+        <div class="hero-card card">
+          <div class="hc-badge">2026 // OFFENSIVE FOCUS</div>
+          <h2 class="hc-title">Core Capabilities</h2>
           <ul class="hc-list">
-            <li>Motion tokens & micro‑interactions</li>
-            <li>Accessible, semantic components</li>
-            <li>Perf‑first, instrumented builds</li>
+            <li><i class="fa-solid fa-shield-halved" aria-hidden="true"></i> OWASP Top 10 &amp; Web App Exploitation</li>
+            <li><i class="fa-solid fa-network-wired" aria-hidden="true"></i> Network Enumeration &amp; Recon</li>
+            <li><i class="fa-solid fa-flag" aria-hidden="true"></i> Multi-Stage CTF Challenge Authoring</li>
+            <li><i class="fa-solid fa-code" aria-hidden="true"></i> Full-Stack Secure Web Development</li>
           </ul>
+          <div class="hc-footer">
+            <a href="https://tryhackme.com/p/sac007" target="_blank" rel="noopener" class="mini-link">TryHackMe: @sac007 ↗</a>
+            <a href="https://github.com/sac-exe" target="_blank" rel="noopener" class="mini-link">GitHub: @sac-exe ↗</a>
+          </div>
         </div>
-        <div class="hero-sticker">Available</div>
       </div>
     </section>
 
+    <!-- PROJECTS & WORK SECTION -->
+    <section class="section" id="work">
+      <div class="section-header">
+        <h2 class="section-title">Featured Projects &amp; Security Work</h2>
+        <p class="section-subtitle">Hands-on security challenges and full-stack applications built from scratch.</p>
+      </div>
+
+      <div class="projects-grid">
+        <article class="project-card card">
+          <div class="project-top">
+            <span class="tag c1">Cybersecurity / CTF</span>
+            <span class="project-year">2026</span>
+          </div>
+          <h3 class="project-title">GEARHEART (SacCTF)</h3>
+          <p class="project-desc">
+            Multi-stage Flask web security Capture The Flag challenge featuring session hijacking, filtered Jinja2 SSTI bypasses, and RSA private key recovery.
+          </p>
+          <div class="tech-pills">
+            <span>Python</span><span>Flask</span><span>SSTI</span><span>Cryptography</span>
+          </div>
+          <div class="project-links">
+            <a class="button btn-sm outline" href="https://github.com/sac-exe" target="_blank" rel="noopener">
+              <i class="fa-brands fa-github" aria-hidden="true"></i> Source &amp; Writeup
+            </a>
+          </div>
+        </article>
+
+        <article class="project-card card">
+          <div class="project-top">
+            <span class="tag c2">Full-Stack Web App</span>
+            <span class="project-year">2026</span>
+          </div>
+          <h3 class="project-title">Readora</h3>
+          <p class="project-desc">
+            Full-stack novel reading and publishing platform featuring Admin, Staff, and User role-based access control, scheduled chapter releases, and an in-app coin economy.
+          </p>
+          <div class="tech-pills">
+            <span>Node.js</span><span>Express</span><span>MongoDB</span><span>RBAC</span>
+          </div>
+          <div class="project-links">
+            <a class="button btn-sm primary" href="https://readora-phi.vercel.app/" target="_blank" rel="noopener">
+              Live Demo ↗
+            </a>
+          </div>
+        </article>
+
+        <article class="project-card card">
+          <div class="project-top">
+            <span class="tag c3">Academic Capstone</span>
+            <span class="project-year">2026</span>
+          </div>
+          <h3 class="project-title">TripZen</h3>
+          <p class="project-desc">
+            Smart tourism management platform built for BCA coursework with multi-role portals (Admin, Staff, User) and automated itinerary workflows.
+          </p>
+          <div class="tech-pills">
+            <span>JavaScript</span><span>SQL</span><span>Bootstrap</span><span>REST API</span>
+          </div>
+          <div class="project-links">
+            <a class="button btn-sm outline" href="https://github.com/sac-exe" target="_blank" rel="noopener">
+              <i class="fa-brands fa-github" aria-hidden="true"></i> Repository
+            </a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- SKILLS & VERIFIED CERTIFICATES -->
     <section class="section" id="skills">
-      <h2 class="section-title">Skills </h2> <i class="fa-solid fa-circle-info" id="infoskill" tabindex="0" aria-describedby="infoskill-card" role="button"></i>
-      <span class="info-wrap">
-        <div id="infoskill-card" class="info-card" role="dialog" aria-hidden="true" aria-labelledby="infoskill-title">
-          <div class="info-card-inner">
-            <div id="infoskill-title" class="info-card-title">Info</div>
-            <div class="info-card-body">If you click the completed skill then you can view my certificate and download it ❤️ </div>
-            <button class="info-card-close" aria-label="Close info">Close</button>
-          </div>
-        </div>
-      </span>
-      <div class="skills-grid">
-       
-        <div class="skill-card sfx-hover " data-cert="/assets/certs/htmlcss-certificate.pdf" onclick="openCertModal(this)">
-          <span class="skill-badge" style="--c: var(--p1)"><i class="fa-brands fa-html5" aria-hidden="true"></i></span>
-          <div class="skill-title">HTML5</div>
-          <div class="skill-level" data-progress="100%">
-            <div class="progress-track"><div class="progress-fill"></div></div>
-            <span class="progress-percent">0%</span>
+      <div class="section-header">
+        <h2 class="section-title">Technical Arsenal &amp; Certifications</h2>
+        <p class="section-subtitle">Click any skill marked with <i class="fa-solid fa-award" aria-hidden="true"></i> to inspect and download the verified certificate.</p>
+      </div>
+
+      <div class="skills-categories">
+        <!-- Category 1 -->
+        <div class="skill-group card">
+          <h3 class="group-title"><span class="dot-badge c1"></span> Offensive Security &amp; Infra</h3>
+          <div class="skill-chips">
+            <div class="skill-chip"><i class="fa-solid fa-bug" aria-hidden="true"></i> Burp Suite</div>
+            <div class="skill-chip"><i class="fa-solid fa-radar" aria-hidden="true"></i> Nmap &amp; Recon</div>
+            <div class="skill-chip"><i class="fa-solid fa-key" aria-hidden="true"></i> Hydra &amp; SQLi</div>
+            <div class="skill-chip"><i class="fa-brands fa-linux" aria-hidden="true"></i> Kali / Linux</div>
+            <div class="skill-chip"><i class="fa-solid fa-network-wired" aria-hidden="true"></i> TCP/IP &amp; CCNA</div>
+            <button type="button" class="skill-chip has-cert" data-cert="/assets/certs/os-certificate.pdf" data-title="Operating Systems">
+              <i class="fa-brands fa-windows" aria-hidden="true"></i> Operating Systems
+              <i class="fa-solid fa-award cert-icon" aria-label="View Certificate"></i>
+            </button>
           </div>
         </div>
 
-        <div class="skill-card sfx-hover" data-cert="/assets/certs/htmlcss-certificate.pdf" onclick="openCertModal(this)">
-          <span class="skill-badge" style="--c: var(--p3)"><i class="fa-brands fa-css3-alt" aria-hidden="true"></i></span>
-          <div class="skill-title">CSS3</div>
-          <div class="skill-level" data-progress="100%">
-            <div class="progress-track"><div class="progress-fill"></div></div>
-            <span class="progress-percent">0%</span>
+        <!-- Category 2 -->
+        <div class="skill-group card">
+          <h3 class="group-title"><span class="dot-badge c2"></span> Programming &amp; Scripting</h3>
+          <div class="skill-chips">
+            <button type="button" class="skill-chip has-cert" data-cert="/assets/certs/python-certificate.pdf" data-title="Python">
+              <i class="fa-brands fa-python" aria-hidden="true"></i> Python
+              <i class="fa-solid fa-award cert-icon" aria-label="View Certificate"></i>
+            </button>
+            <button type="button" class="skill-chip has-cert" data-cert="/assets/certs/JavaScript.pdf" data-title="JavaScript">
+              <i class="fa-brands fa-js" aria-hidden="true"></i> JavaScript (ES6+)
+              <i class="fa-solid fa-award cert-icon" aria-label="View Certificate"></i>
+            </button>
+            <button type="button" class="skill-chip has-cert" data-cert="/assets/certs/sql-certificate.pdf" data-title="SQL">
+              <i class="fa-solid fa-database" aria-hidden="true"></i> SQL
+              <i class="fa-solid fa-award cert-icon" aria-label="View Certificate"></i>
+            </button>
+            <div class="skill-chip"><i class="fa-solid fa-code" aria-hidden="true"></i> C++ &amp; Bash</div>
+            <button type="button" class="skill-chip has-cert" data-cert="/assets/certs/git-certificate.pdf" data-title="Git">
+              <i class="fa-brands fa-git-alt" aria-hidden="true"></i> Git &amp; GitHub
+              <i class="fa-solid fa-award cert-icon" aria-label="View Certificate"></i>
+            </button>
           </div>
         </div>
 
-        <div class="skill-card sfx-hover" data-cert="/assets/certs/JavaScript.pdf" onclick="openCertModal(this)">
-          <span class="skill-badge" style="--c: var(--p4)"><i class="fa-brands fa-js" aria-hidden="true"></i></span>
-          <div class="skill-title">JavaScript</div>
-          <div class="skill-level" data-progress="100%">
-            <div class="progress-track"><div class="progress-fill"></div></div>
-            <span class="progress-percent">0%</span>
-          </div>
-        </div>
-
-        <div class="skill-card sfx-hover" data-cert="/assets/certs/nodeJs-certificate.pdf" onclick="openCertModal(this)">
-          <span class="skill-badge" style="--c: var(--p2)"><i class="fa-brands fa-node-js" aria-hidden="true"></i></span>
-          <div class="skill-title">Node.js</div>
-          <div class="skill-level" data-progress="100%">
-            <div class="progress-track"><div class="progress-fill"></div></div>
-            <span class="progress-percent">0%</span>
-          </div>
-        </div>
-
-        <div class="skill-card sfx-hover" data-cert="/assets/certs/react-certificate.pdf" onclick="openCertModal(this)">
-          <span class="skill-badge" style="--c: var(--p6)"><i class="fa-brands fa-react" aria-hidden="true"></i></span>
-          <div class="skill-title">React</div>
-          <div class="skill-level" data-progress="100%">
-            <div class="progress-track"><div class="progress-fill"></div></div>
-            <span class="progress-percent">0%</span>
-          </div>
-        </div>
-
-        <div class="skill-card sfx-hover">
-          <span class="skill-badge" style="--c: var(--p5)"><i class="fa-solid fa-database" aria-hidden="true"></i></span>
-          <div class="skill-title">MongoDB</div>
-          <div class="skill-level" data-progress="50%">
-            <div class="progress-track"><div class="progress-fill"></div></div>
-            <span class="progress-percent">0%</span>
-          </div>
-        </div>
-
-        <div class="skill-card sfx-hover">
-          <span class="skill-badge" style="--c: var(--p2)"><i class="fa-brands fa-linux" aria-hidden="true"></i></span>
-          <div class="skill-title">Linux</div>
-          <div class="skill-level" data-progress="50%">
-            <div class="progress-track"><div class="progress-fill"></div></div>
-            <span class="progress-percent">0%</span>
-          </div>
-        </div>
-
-        <div class="skill-card sfx-hover" data-cert="/assets/certs/bootstrap-certificate.pdf" onclick="openCertModal(this)">
-          <span class="skill-badge" style="--c: var(--p5)"><i class="fa-brands fa-bootstrap fa-canvas-roomy"></i></span>
-          <div class="skill-title">Bootstrap,Flexbox</div>
-          <div class="skill-level" data-progress="100%">
-            <div class="progress-track"><div class="progress-fill"></div></div>
-            <span class="progress-percent">0%</span>
-          </div>
-        </div>
-
-        <div class="skill-card sfx-hover">
-          <span class="skill-badge" style="--c: var(--p3)"><i class="fa-solid fa-network-wired" aria-hidden="true"></i></span>
-          <div class="skill-title">Networking</div>
-          <div class="skill-level" data-progress="85%">
-            <div class="progress-track"><div class="progress-fill"></div></div>
-            <span class="progress-percent">0%</span>
-          </div>
-        </div>
-
-        <div class="skill-card sfx-hover">
-          <span class="skill-badge" style="--c: var(--p1)"><i class="fa-solid fa-wifi" aria-hidden="true"></i></span>
-          <div class="skill-title">CCNA</div>
-          <div class="skill-level" data-progress="50%">
-            <div class="progress-track"><div class="progress-fill"></div></div>
-            <span class="progress-percent">0%</span>
-          </div>
-        </div>
-
-        <div class="skill-card sfx-hover" data-cert="/assets/certs/python-certificate.pdf" onclick="openCertModal(this)">
-          <span class="skill-badge" style="--c: var(--p4)"><i class="fa-brands fa-python" aria-hidden="true"></i></span>
-          <div class="skill-title">Python</div>
-          <div class="skill-level" data-progress="100%">
-            <div class="progress-track"><div class="progress-fill"></div></div>
-            <span class="progress-percent">0%</span>
-          </div>
-        </div>
-        <div class="skill-card sfx-hover" data-cert="/assets/certs/sql-certificate.pdf" onclick="openCertModal(this)">
-          <span class="skill-badge" style="--c: var(--p6)"><i class="fa-solid fa-database"></i></span>
-          <div class="skill-title">SQL</div>
-          <div class="skill-level" data-progress="100%">
-            <div class="progress-track"><div class="progress-fill"></div></div>
-            <span class="progress-percent">0%</span>
-          </div>
-        </div>
-        <div class="skill-card sfx-hover" data-cert="/assets/certs/os-certificate.pdf" onclick="openCertModal(this)">
-          <span class="skill-badge" style="--c: var(--p5)"><i class="fa-brands fa-windows"></i></span>
-          <div class="skill-title">OS</div>
-          <div class="skill-level" data-progress="100%">
-            <div class="progress-track"><div class="progress-fill"></div></div>
-            <span class="progress-percent">0%</span>
-          </div>
-        </div>
-        <div class="skill-card sfx-hover" data-cert="/assets/certs/git-certificate.pdf" onclick="openCertModal(this)">
-          <span class="skill-badge" style="--c: var(--p2)"><i class="fa-brands fa-git-alt"></i></span>
-          <div class="skill-title">Git</div>
-          <div class="skill-level" data-progress="100%">
-            <div class="progress-track"><div class="progress-fill"></div></div>
-            <span class="progress-percent">0%</span>
+        <!-- Category 3 -->
+        <div class="skill-group card">
+          <h3 class="group-title"><span class="dot-badge c3"></span> Web Stack &amp; Architecture</h3>
+          <div class="skill-chips">
+            <button type="button" class="skill-chip has-cert" data-cert="/assets/certs/nodeJs-certificate.pdf" data-title="Node.js">
+              <i class="fa-brands fa-node-js" aria-hidden="true"></i> Node.js &amp; Express
+              <i class="fa-solid fa-award cert-icon" aria-label="View Certificate"></i>
+            </button>
+            <button type="button" class="skill-chip has-cert" data-cert="/assets/certs/react-certificate.pdf" data-title="React">
+              <i class="fa-brands fa-react" aria-hidden="true"></i> React
+              <i class="fa-solid fa-award cert-icon" aria-label="View Certificate"></i>
+            </button>
+            <div class="skill-chip"><i class="fa-solid fa-leaf" aria-hidden="true"></i> MongoDB</div>
+            <button type="button" class="skill-chip has-cert" data-cert="/assets/certs/htmlcss-certificate.pdf" data-title="HTML5 &amp; CSS3">
+              <i class="fa-brands fa-html5" aria-hidden="true"></i> HTML5 &amp; CSS3
+              <i class="fa-solid fa-award cert-icon" aria-label="View Certificate"></i>
+            </button>
+            <button type="button" class="skill-chip has-cert" data-cert="/assets/certs/bootstrap-certificate.pdf" data-title="Bootstrap &amp; Flexbox">
+              <i class="fa-brands fa-bootstrap" aria-hidden="true"></i> Bootstrap
+              <i class="fa-solid fa-award cert-icon" aria-label="View Certificate"></i>
+            </button>
           </div>
         </div>
       </div>
 
-      <!-- Global Certificate Modal -->
-      <div id="cert-modal" class="cert-modal">
-        <div class="cert-modal-content">
-          <button class="cert-close-btn" onclick="closeCertModal()">&times;</button>
-          <h3 id="cert-modal-title">Certificate</h3>
-          
-          <!-- Certificate Preview Frame/Image -->
-          <iframe id="cert-viewer" src="" frameborder="0"></iframe>
-
-          <!-- Download & Action Controls -->
+      <!-- Certificate Modal -->
+      <div id="cert-modal" class="cert-modal" role="dialog" aria-modal="true" aria-labelledby="cert-modal-title" hidden>
+        <div class="cert-modal-content card">
+          <div class="cert-modal-header">
+            <h3 id="cert-modal-title">Certificate</h3>
+            <button type="button" class="cert-close-btn" aria-label="Close certificate preview">&times;</button>
+          </div>
+          <iframe id="cert-viewer" src="" title="Certificate Preview"></iframe>
           <div class="cert-modal-actions">
-            <a id="cert-download-btn" href="" download class="button btn-sm">Download Certificate 📥</a>
+            <a id="cert-download-btn" href="" download class="button primary btn-sm">
+              Download PDF <i class="fa-solid fa-download" aria-hidden="true"></i>
+            </a>
           </div>
-        </div>
-    </section>
-
-    <section class="game-section my-5">
-      <h2 class="section-title">Terminal</h2>
-      
-      <div class="terminal-card card">
-        <div class="terminal-header">
-          <span class="dot red"></span>
-          <span class="dot yellow"></span>
-          <span class="dot green"></span>
-          <div class="terminal-body" id="terminal-output">
-            <p>Type <span class="highlight">'help'</span> to view available commands or find the hidden flag</p>
-          </div>
-          <span class="terminal-title">root@sachin-sac:~#</span>
-        </div>
-        <div class="terminal-input-line">
-          <span class="prompt">⚡</span>
-          <input type="text" id="terminal-input" placeholder="Enter command..." autofocus />
         </div>
       </div>
     </section>
 
+    <!-- INTERACTIVE SECURITY LABS (TERMINAL + SOC SIMULATOR) -->
+    <section class="section" id="labs">
+      <div class="section-header">
+        <h2 class="section-title">Interactive Security Playground</h2>
+        <p class="section-subtitle">Query my profile via CLI or contain a live simulated reverse-shell breach.</p>
+      </div>
+
+      <div class="labs-grid">
+        <!-- Interactive CLI Terminal -->
+        <div class="terminal-card card">
+          <div class="terminal-bar">
+            <div class="window-dots" aria-hidden="true">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+            </div>
+            <span class="terminal-title">admin-sac:~#</span>
+          </div>
+          <div class="terminal-body" id="terminal-output" aria-live="polite">
+            <p>Welcome to <strong>SAC-OS v2.6</strong>. Type <span class="cmd-hint">help</span> for commands or hunt for the hidden flag.</p>
+          </div>
+          <div class="terminal-input-line">
+            <label for="terminal-input" class="prompt">adminsac:~$</label>
+            <input type="text" id="terminal-input" placeholder="Type 'help' or 'flag'..." autocomplete="off" spellcheck="false" />
+          </div>
+        </div>
+
+        <!-- SOC Crisis Simulator -->
+        <div class="soc-card card" id="soc-card">
+          <div class="soc-header">
+            <div class="soc-status">
+              <span class="status-indicator" id="soc-indicator" aria-hidden="true"></span>
+              <span id="soc-status-text">STATUS: OPERATIONAL</span>
+            </div>
+            <div class="soc-metrics">
+              <span>TIMER: <strong id="soc-timer">03:00</strong></span>
+              <span class="sep">|</span>
+              <span>INTEGRITY: <strong id="soc-health">100%</strong></span>
+            </div>
+          </div>
+
+          <div class="soc-monitor">
+            <div class="crt-overlay" aria-hidden="true"></div>
+            <div class="soc-terminal" id="soc-terminal" aria-live="polite">
+              <p class="sys-msg">[SOC SIEM v2.6 READY]</p>
+              <p class="sys-msg">Click <strong>"Initiate Incident Drill"</strong> to triage and contain a live intrusion.</p>
+            </div>
+          </div>
+
+          <div class="soc-subsystem" id="soc-subsystem">
+            <p class="sys-msg muted">Awaiting incident simulation trigger...</p>
+          </div>
+
+          <div class="soc-controls" id="soc-controls">
+            <button type="button" id="soc-start-btn" class="button primary btn-sm">
+              Initiate Incident Drill <i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
     <section class="section" id="about">
-      <h2 class="section-title">About</h2>
+      <div class="section-header">
+        <h2 class="section-title">About Me</h2>
+      </div>
       <div class="about-grid card">
-        <p>
-          I am an aspiring Penetration Tester currently building a strong foundation in cybersecurity through hands on learning and practical labs at Offenso Hackers Academy.
-
-          I enjoy understanding how systems work, identifying security weaknesses, and continuously improving my technical skills.
-
-          I believe cybersecurity is a field where learning never stops. That's why I actively document my learning journey on LinkedIn while expanding my knowledge through labs, projects, and continuous practice.
-
-          My goal is to begin my career as a Penetration Tester and contribute to helping organizations identify and remediate security vulnerabilities.
-
-          I'm always open to connecting with cybersecurity professionals, recruiters, and fellow learners.
-        </p>
-        <ul class="about-bullets">
-          <li>Graduated BCA From Kerala University</li>
-          <li>Aspiring Offensive Security Engineer</li>
-          <li>Kerala,Kollam</li>
-        </ul>
-        <div class="about-links">
-          <a class="button sfx-click sfx-hover" href="/assets/doc/Sachin_Resume.pdf" target="_blank" rel="noopener">Download Resume <i class="fa-solid fa-download"></i></a>
+        <div class="about-text">
+          <p>
+            I am a Bachelor of Computer Applications (BCA) graduate from Kerala University and an aspiring Penetration Tester trained at <strong>Offenso Hackers Academy</strong> in Thiruvananthapuram.
+          </p>
+          <p>
+            My background spans both building full-stack web applications and breaking them—giving me a practical understanding of how authentication flaws, injection vectors, and misconfigurations arise in real-world codebases.
+          </p>
+          <p>
+            I regularly practice on TryHackMe, design custom CTF challenges, and am seeking entry-level Penetration Testing, Vulnerability Assessment, or Security Analyst opportunities.
+          </p>
+        </div>
+        <div class="about-side">
+          <ul class="about-bullets">
+            <li><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i> BCA Graduate — Kerala University (2026)</li>
+            <li><i class="fa-solid fa-user-secret" aria-hidden="true"></i> Offenso Certified Penetration Tester Trainee</li>
+            <li><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Kollam, Kerala, India</li>
+          </ul>
+          <a class="button primary" href="/assets/doc/Sachin_Resume.pdf" target="_blank" rel="noopener">
+            Download Full Resume <i class="fa-solid fa-download" aria-hidden="true"></i>
+          </a>
         </div>
       </div>
     </section>
 
-    <section class="section" id="links">
-      <h2 class="section-title">My websites</h2>
-      <div class="links-grid">
-        <a class="link-card sfx-hover" href="https://readora-phi.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="Readora">
-          <span class="link-title">Readora</span><span class="link-external" aria-hidden="true">↗</span>
-        </a>
-        <a class="link-card sfx-hover" href="https://portfolio-iota-taupe-30.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="Portfolio">
-          <span class="link-title">My Portfolio</span><span class="link-external" aria-hidden="true">↗</span>
-        </a>
+    <!-- CONTACT SECTION -->
+    <section class="section" id="contact">
+      <div class="section-header">
+        <h2 class="section-title">Get In Touch</h2>
+        <p class="section-subtitle">Reach out for penetration testing roles, internships, or security collaborations.</p>
       </div>
-    </section>
 
-    <section class="soc-section my-5">
-      <h2 class="section-title">SOC Crisis Simulator</h2>
-
-      <div class="soc-card card" id="soc-card">
-        <!-- Header Metrics Bar -->
-        <div class="soc-header">
-          <div class="soc-status">
-            <span class="status-indicator" id="soc-indicator"></span>
-            <span id="soc-status-text">STATUS: OPERATIONAL</span>
-          </div>
-          <div class="soc-metrics">
-            <span>TIMER: <strong id="soc-timer">03:00</strong></span> | 
-            <span>INTEGRITY: <strong id="soc-health">100%</strong></span>
-          </div>
-        </div>
-
-        <!-- Live Monitor Console -->
-        <div class="soc-monitor" id="soc-monitor">
-          <div class="crt-overlay"></div>
-          <div class="soc-terminal" id="soc-terminal">
-            <p class="sys-msg">[SOC TERMINAL v2.0.4 READY]</p>
-            <p class="sys-msg">System operational. Click <b>"Initiate Emergency Protocol"</b> to start active threat simulation.</p>
-          </div>
-        </div>
-
-        <!-- Dynamic Sub-System Work Area -->
-        <div class="soc-subsystem" id="soc-subsystem">
-          <!-- Injected dynamically via JS: terminal input, port toggles, log inspect -->
-        </div>
-
-        <!-- Main Command Controls -->
-        <div class="soc-controls" id="soc-controls">
-          <button id="soc-start-btn" class="button btn-sm">Initiate Emergency Protocol 🚨</button>
-        </div>
-      </div>
-    </section>
-<br/>
-
-    <section class="section contact" id="contact">
-      <h2 class="section-title">Contact</h2>
-
-      <div class="contact-grid">
-
-        <!-- Contact Form -->
+      <div class="contact-layout">
         <div class="card contact-form-card">
-          <form
-            id="contact-form"
-            action="https://api.web3forms.com/submit"
-            method="POST"
-          >
-
-            <!-- Web3Forms configuration -->
-            <input
-              type="hidden"
-              name="access_key"
-              value="0dd4018f-4386-4e06-9381-29746074a927"
-            >
-
-            <input
-              type="hidden"
-              name="subject"
-              value="New Portfolio Contact Message"
-            >
-
-            <!-- Spam protection -->
-            <input
-              type="checkbox"
-              name="botcheck"
-              style="display: none;"
-            >
+          <form id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+            <input type="hidden" name="access_key" value="0dd4018f-4386-4e06-9381-29746074a927" />
+            <input type="hidden" name="subject" value="New Portfolio Contact Message" />
+            <input type="checkbox" name="botcheck" style="display: none;" tabindex="-1" autocomplete="off" />
 
             <div class="input-row">
-
-              <input
-                type="text"
-                name="name"
-                placeholder="Your Name"
-                autocomplete="name"
-                required
-              >
-
-              <input
-                type="email"
-                name="email"
-                placeholder="Your Email"
-                autocomplete="email"
-                required
-              >
-
+              <div class="field-group">
+                <label for="c-name">Name</label>
+                <input id="c-name" type="text" name="name" placeholder="Jane Doe" autocomplete="name" required />
+              </div>
+              <div class="field-group">
+                <label for="c-email">Email</label>
+                <input id="c-email" type="email" name="email" placeholder="jane@company.com" autocomplete="email" required />
+              </div>
             </div>
 
-            <input
-              type="text"
-              name="message_subject"
-              placeholder="Subject"
-              required
-            >
+            <div class="field-group">
+              <label for="c-subject">Subject</label>
+              <input id="c-subject" type="text" name="message_subject" placeholder="Security Internship / Project Inquiry" required />
+            </div>
 
-            <textarea
-              name="message"
-              rows="7"
-              placeholder="Tell me about your project..."
-              required
-            ></textarea>
+            <div class="field-group">
+              <label for="c-message">Message</label>
+              <textarea id="c-message" name="message" rows="5" placeholder="Tell me about the role or project..." required></textarea>
+            </div>
 
-            <button type="submit" class="send-btn">
-              Send Message
-              <i class="fa-solid fa-paper-plane"></i>
+            <button type="submit" class="button primary send-btn">
+              Send Message <i class="fa-solid fa-paper-plane" aria-hidden="true"></i>
             </button>
-
           </form>
         </div>
 
-      </div>
-    <br/>
-      <div class="card contact-card">
-          <div class="contact-meta">
-            <div class="status-dot" aria-hidden="true"></div>
-            <span>Open to freelance and internships</span>
-          </div>
-
+        <aside class="card contact-card">
+          <h3>Direct Channels</h3>
+          <p class="muted">Prefer direct email or want to check my lab activity? Connect below.</p>
           <div class="contact-actions">
-
-            <a
-              class="button primary sfx-click sfx-hover"
-              href="mailto:sachinjrwork@gmail.com"
-            >
-              <i class="fa-regular fa-envelope"></i>
-              Email
+            <a class="button primary" href="mailto:sachinjrwork@gmail.com">
+              <i class="fa-regular fa-envelope" aria-hidden="true"></i> sachinjrwork@gmail.com
             </a>
-
-            <a
-              class="button outline c1 sfx-click sfx-hover"
-              href="https://github.com/sac-exe"
-              target="_blank"
-              rel="noopener"
-            >
-              <i class="fa-brands fa-github"></i>
-              GitHub
+            <a class="button outline c1" href="https://github.com/sac-exe" target="_blank" rel="noopener">
+              <i class="fa-brands fa-github" aria-hidden="true"></i> GitHub
             </a>
-
-            <a
-              class="button outline c2 sfx-click sfx-hover"
-              href="https://www.linkedin.com/in/sachin-sac/"
-              target="_blank"
-              rel="noopener"
-            >
-              <i class="fa-brands fa-linkedin"></i>
-              LinkedIn
+            <a class="button outline c2" href="https://www.linkedin.com/in/sachin-sac/" target="_blank" rel="noopener">
+              <i class="fa-brands fa-linkedin" aria-hidden="true"></i> LinkedIn
             </a>
-
-            <a
-              class="button outline c4 sfx-click sfx-hover"
-              href="https://tryhackme.com/p/sac007"
-              target="_blank"
-              rel="noopener"
-            >
-              <i class="fa-solid fa-square-binary"></i>
-              TryHackMe
+            <a class="button outline c4" href="https://tryhackme.com/p/sac007" target="_blank" rel="noopener">
+              <i class="fa-solid fa-shield-halved" aria-hidden="true"></i> TryHackMe
             </a>
-
-            <a
-              class="button outline c3 sfx-click sfx-hover"
-              href="https://www.instagram.com/s_c.exe?igsh=b3gyY3RqODR3b2cz"
-              target="_blank"
-              rel="noopener"
-            >
-              <i class="fa-brands fa-instagram"></i>
-              Instagram
-            </a>
-
           </div>
-        </div>
+        </aside>
+      </div>
     </section>
   </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <span>&copy; 2026 Sachin.J — Offensive Security &amp; Web Engineering</span>
+      <span>Built with clean HTML, CSS &amp; Vanilla JS</span>
+    </div>
+  </footer>
 
   <button class="scroll-top" type="button" aria-label="Scroll to top" aria-hidden="true" tabindex="-1">
     <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
   </button>
-
 </body>
 </html>
